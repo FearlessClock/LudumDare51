@@ -7,6 +7,8 @@ public enum FoxState { WANDERING, MOVING_TO_TARGET, WAITING_FOR_END_OF_EVENT }
 
 public class FoxMovement : MonoBehaviour
 {
+    public Vector2 initialTarget;
+
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private float wanderSpeed = 1;
     [SerializeField] private float drag = 0.92f;
@@ -18,7 +20,6 @@ public class FoxMovement : MonoBehaviour
     [SerializeField] private float avoidDistance = 1;
     [SerializeField] private float avoidanceMultiplier = 0.5f;
 
-    [SerializeField] private Vector2 initialTarget;
     private Vector3 currentTarget;
 
     [SerializeField] private float attackRange = 1.5f;
@@ -41,9 +42,12 @@ public class FoxMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         scaryObjects = FindObjectsOfType<ScaryObject>();
+    }
 
+    private void Start()
+    {
         initialTarget = initialTarget + Random.insideUnitCircle * maxWanderDistance;
-        MoveToPoint(initialTarget, 3);
+        MoveToPoint(initialTarget, 3); 
     }
 
     public void MoveToPoint(Vector3 targetPosition, float stayTime)

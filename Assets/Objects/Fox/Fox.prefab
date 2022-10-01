@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4513773542438901893}
   - component: {fileID: 4513773542438901895}
   - component: {fileID: 4513773542438901894}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Fox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4513773542456554362}
   - component: {fileID: 4513773542456554361}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: animals1_54
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4513773543068622464}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
