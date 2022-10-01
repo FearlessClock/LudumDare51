@@ -18,7 +18,7 @@ public class MoveToPointer : MonoBehaviour
         {
             Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0;
-            catMovement.MoveToPoint(pos, 3);
+            catMovement.MoveToPointAndWaitForTime(pos, 3);
         }
     }
 }

@@ -1,8 +1,10 @@
+using Codice.Client.BaseCommands;
 using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
@@ -31,9 +33,12 @@ public class CatMovement : MonoBehaviour
 
     private bool hasCurrentGoal = false;
     private float waitTimer = 0;
+    private bool isWaitingForWaitActionCallback = false;
     private bool hasWanderTarget = false;
 
     private CatState currentState = CatState.WANDERING;
+
+    public Action OnReachTarget = null;
 
     private void Awake()
     {
@@ -41,13 +46,28 @@ public class CatMovement : MonoBehaviour
         scaryObjects = FindObjectsOfType<ScaryObject>();
     }
 
-    public void MoveToPoint(Vector3 targetPosition, float stayTime)
+    public void MoveToPointAndWaitForTime(Vector3 targetPosition, float stayTime)
     {
         currentTarget = targetPosition;
         hasCurrentGoal = true;
         hasWanderTarget = false;
         waitTimer = stayTime;
         currentState = CatState.MOVING_TO_TARGET;
+    }
+
+    public void MoveToPointAndWaitForEvent(Vector3 targetPosition)
+    {
+        currentTarget = targetPosition;
+        hasCurrentGoal = true;
+        hasWanderTarget = false;
+        isWaitingForWaitActionCallback = true;
+        currentState = CatState.MOVING_TO_TARGET;
+    }
+
+    public void OnWaitDone()
+    {
+        currentState = CatState.WANDERING;
+        isWaitingForWaitActionCallback = false;
     }
 
     private void FixedUpdate()
@@ -78,14 +98,21 @@ public class CatMovement : MonoBehaviour
 
     private Vector3 WaitingAtTarget()
     {
-        waitTimer -= TimeManager.fixedDeltaTime;
-        
-        if(waitTimer < 0)
+        if (isWaitingForWaitActionCallback)
         {
-            currentState = CatState.WANDERING;
+            return Vector3.zero;
         }
+        else
+        {
+            waitTimer -= TimeManager.fixedDeltaTime;
 
-        return Vector3.zero;
+            if (waitTimer < 0)
+            {
+                currentState = CatState.WANDERING;
+            }
+
+            return Vector3.zero;
+        }
     }
 
     private Vector3 MoveToTargetState(Vector3 acceleration)
@@ -154,7 +181,7 @@ public class CatMovement : MonoBehaviour
 
     private void ReachedGoal()
     {
-
+        OnReachTarget?.Invoke();
     }
 
     private void OnDrawGizmos()
