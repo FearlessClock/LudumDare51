@@ -6,6 +6,9 @@ using UnityEngine;
 public class FoodContainer : MonoBehaviour
 {
     [SerializeField] private int maxFoodCount;
+    public int MAXFoodCount => maxFoodCount;
+    
+    
     private int actualFoodCount;
     public int FoodCount => actualFoodCount;
 

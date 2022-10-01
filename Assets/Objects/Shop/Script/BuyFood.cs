@@ -40,7 +40,7 @@ public class BuyFood : MonoBehaviour, IInteractable
 
     public void Interation()
     {
-        //if (ResourcesManager.Instance.MoneyCount <= moneyNeeded) return;
+        if (foodContainer.FoodCount >= foodContainer.MAXFoodCount) return;
         isInteracting = true;
         isEmptying = false;
     }
@@ -65,7 +65,7 @@ public class BuyFood : MonoBehaviour, IInteractable
             circleIsReady.fillAmount = 0;
             actualIntercationTime = interationTime;
 
-            //if (resources.MoneyCount < moneyNeeded)  StopInteration();
+            if (foodContainer.FoodCount >= foodContainer.MAXFoodCount)  StopInteration();
             
         }
     }
