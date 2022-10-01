@@ -34,9 +34,11 @@ public class CatAttackController : MonoBehaviour
                     closeFoxes.Add(FoxManager.Instance.foxes[i]);
                 }
             }
-
-            currentTarget = closeFoxes[Random.Range(0, closeFoxes.Count)];
-            catGoalHandler.AddGoal(new FollowEnemyGoal(currentTarget.transform));
+            if(closeFoxes.Count > 0)
+            {
+                currentTarget = closeFoxes[Random.Range(0, closeFoxes.Count)];
+                catGoalHandler.AddGoal(new FollowEnemyGoal(currentTarget.transform));
+            }
         }
         else if(checkWait <= 0)
         {
