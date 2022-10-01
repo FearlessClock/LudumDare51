@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < MultiManager.Instance.PlayersNumber; i++)
         {
             PlayerHandler player = Instantiate<PlayerHandler>(playerPrefab, transform.position, Quaternion.identity);
             player.PlayerInit(MultiManager.Instance.GetPlayerID(i), isPlayersStunned[i]);

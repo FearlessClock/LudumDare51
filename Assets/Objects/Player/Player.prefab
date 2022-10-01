@@ -171,10 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58108fa2dad3e498e5a4425d4293ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 0.3
+  attackRange: 0.5
   enemyMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   isStunned: {fileID: 11400000, guid: e4fba156cf57fd247aa3c5956d113cac, type: 2}
 --- !u!114 &7286176353677943153
 MonoBehaviour:
@@ -188,7 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 166db7bffc2032b428713f46af6bd298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStunned: {fileID: 11400000, guid: e4fba156cf57fd247aa3c5956d113cac, type: 2}
 --- !u!70 &7286176353677943164
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

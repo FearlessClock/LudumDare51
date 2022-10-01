@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
     public void InitPlayer()
     {
         player = GetComponent<PlayerHandler>().player;
-        
+        isStunned = GetComponent<PlayerHandler>().isStunned;
     }
 
     void Update()

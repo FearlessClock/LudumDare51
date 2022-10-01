@@ -47,15 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc737e451a08dbc4e9e5ec28c0e57064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialTarget: {x: 0, y: 0}
   movementSpeed: 1
   wanderSpeed: 1
   drag: 0.7
   closeDistance: 0.5
   maxSpeed: 1
-  maxWanderDistance: 2
+  maxWanderDistance: 3.98
   avoidDistance: 1
   avoidanceMultiplier: 0.8
-  initialTarget: {x: 0, y: 0}
   attackRange: 1.05
   timeBeforeAttack: 5
 --- !u!50 &4513773542438901895
