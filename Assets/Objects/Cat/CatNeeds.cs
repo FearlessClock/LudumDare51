@@ -15,6 +15,8 @@ public class CatNeeds : MonoBehaviour
     private bool hasSentWant = false;
     private CatGoalHandler goalHandler = null;
 
+    public float FilledPercentage => currentHunger / maxHunger;
+
     private void Awake()
     {
         goalHandler = GetComponent<CatGoalHandler>();
@@ -24,12 +26,12 @@ public class CatNeeds : MonoBehaviour
     private void Update()
     {
         currentHunger -= lossOfHungerRate * Time.deltaTime;
-        if(!hasSentWant && currentHunger/maxHunger < hungerCutoffPercentage)
+        if(!hasSentWant && FilledPercentage < hungerCutoffPercentage)
         {
             hasSentWant = true;
-            goalHandler.AddGoal(new MoveToGoal(BowlController.Instance.GetInteractionPoint.position, 5));
+            goalHandler.AddGoal(new MoveToGoal(BowlController.Instance.GetInteractionPoint.position, 3));
         }
-        else if(currentHunger / maxHunger > hungerCutoffPercentage && hasSentWant)
+        else if(FilledPercentage > hungerCutoffPercentage && hasSentWant)
         {
             hasSentWant = false;
         }
@@ -55,5 +57,10 @@ public class CatNeeds : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(this.transform.position + Vector3.up*0.7f, this.transform.position + Vector3.up * 0.7f + Vector3.right * currentHunger);
+    }
+
+    public void UseNeeds(float needsUsedToLayEggPercentage)
+    {
+        currentHunger -= needsUsedToLayEggPercentage;
     }
 }

@@ -23,6 +23,8 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private float avoidDistance = 1;
     [SerializeField] private float avoidanceMultiplier = 0.5f;
 
+    [SerializeField] private float wanderWaitTimeOffset = 3;
+
     private Vector3 currentTarget;
 
     private Rigidbody2D rb = null;
@@ -175,7 +177,7 @@ public class CatMovement : MonoBehaviour
     private void GetNewWanderTarget()
     {
         currentTarget = Random.insideUnitCircle * maxWanderDistance;
-        waitTimer = 1;
+        waitTimer = 1 + Random.value * wanderWaitTimeOffset;
         hasWanderTarget = true;
     }
 
