@@ -131,6 +131,8 @@ GameObject:
   - component: {fileID: 7092969286602488387}
   - component: {fileID: 7092969286602488386}
   - component: {fileID: 7092969286602488389}
+  - component: {fileID: 8385098514396774581}
+  - component: {fileID: 9117587088612773100}
   m_Layer: 6
   m_Name: Cat
   m_TagString: Untagged
@@ -174,6 +176,9 @@ MonoBehaviour:
   maxWanderDistance: 3.92
   avoidDistance: 1.16
   avoidanceMultiplier: 0.7
+  wanderWaitTimeOffset: 3
+  closeToEnemyDistance: 0.5
+  tooCloseToEnemyDistance: 0.2
 --- !u!50 &7092969286602488385
 Rigidbody2D:
   serializedVersion: 4
@@ -256,3 +261,31 @@ MonoBehaviour:
   eggPrefab: {fileID: 3720382648829925085, guid: 05c3ea5f63620b543b7713b5c91106b0, type: 3}
   eggLayCooldownTime: 5
   waitBetweenChecks: 1
+--- !u!114 &8385098514396774581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092969286602488412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee027d2c0cb75924bbd667cc6396bb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySeeRange: 3
+  hitDistance: 0.61
+  hitCooldownTime: 10
+--- !u!114 &9117587088612773100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092969286602488412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76be82cb5b640074d8f558949477ad19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 4
