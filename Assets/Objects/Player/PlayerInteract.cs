@@ -37,11 +37,13 @@ public class PlayerInteract : MonoBehaviour
             currentInteractable = collision.GetComponent<IInteractable>();
 
     }
-    
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.GetComponent<IInteractable>() != null)
+        if (collision.GetComponent<IInteractable>() != null)
+        {
+            currentInteractable.StopInteration();
             currentInteractable = null;
-
+        }
     }
 }
