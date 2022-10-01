@@ -6,4 +6,5 @@ public interface IInteractable
 {
     void Interation();
     void StopInteration();
+
 }
