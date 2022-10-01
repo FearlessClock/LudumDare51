@@ -143,6 +143,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  isStunned: {fileID: 11400000, guid: e4fba156cf57fd247aa3c5956d113cac, type: 2}
 --- !u!114 &7286176353677943157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 3
+  isStunned: {fileID: 11400000, guid: e4fba156cf57fd247aa3c5956d113cac, type: 2}
 --- !u!114 &7286176353677943152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +174,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
+  isStunned: {fileID: 11400000, guid: e4fba156cf57fd247aa3c5956d113cac, type: 2}
 --- !u!114 &7286176353677943153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 166db7bffc2032b428713f46af6bd298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStunned: {fileID: 11400000, guid: e4fba156cf57fd247aa3c5956d113cac, type: 2}
 --- !u!70 &7286176353677943164
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class PlayerInteract : MonoBehaviour
     public Player player;
 
     private IInteractable currentInteractable;
+    [SerializeField] private BoolVariable isStunned;
 
     public void InitPlayer()
     {
@@ -18,7 +19,7 @@ public class PlayerInteract : MonoBehaviour
     private void Update()
     {
 
-        if (player != null)
+        if (player != null && !isStunned.value)
         {
             if (player.GetButton("Interact") && currentInteractable != null)
             {

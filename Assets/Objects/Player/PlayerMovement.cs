@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 0;
     private Vector3 direction;
     private Vector3 previousDirection;
+    [SerializeField] private BoolVariable isStunned;
 
     public void InitPlayer()
     {
@@ -19,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        if (player != null)
+        if (player != null && !isStunned.value)
         {
             direction = new Vector2(player.GetAxis("Horizontal"), player.GetAxis("Vertical"));
 
@@ -45,6 +46,10 @@ public class PlayerMovement : MonoBehaviour
             }
 
             transform.position += previousDirection.normalized * speed * Time.deltaTime;
+        }
+        if (isStunned.value)
+        {
+            speed = 0;
         }
     }
 }

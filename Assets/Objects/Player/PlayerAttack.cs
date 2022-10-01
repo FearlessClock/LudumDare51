@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     private Vector3 direction;
     private Vector3 previousDirection;
+    [SerializeField] private BoolVariable isStunned;
 
     public void InitPlayer()
     {
@@ -19,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
+        if (player != null && !isStunned.value)
         {
             direction = new Vector3(player.GetAxis("Horizontal"), player.GetAxis("Vertical"));
 
