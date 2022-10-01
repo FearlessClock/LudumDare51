@@ -8,11 +8,19 @@ public class CatGoalHandler : MonoBehaviour
     private Queue<IGoal> goals = new Queue<IGoal>();
     private CatMovement catMovement = null;
     private IGoal currentGoal = null;
+    private bool isGoalActive = false;
 
     private void Awake()
     {
         catMovement = GetComponent<CatMovement>();
-        catMovement.OnReachTarget += NextGoal;
+    }
+
+    private void Start()
+    {
+        if(goals.Count == 0)
+        {
+            AddGoal(new WanderGoal());
+        }
     }
 
     private void NextGoal()
@@ -21,38 +29,48 @@ public class CatGoalHandler : MonoBehaviour
         {
             StartGoal();
         }
+        else
+        {
+            AddGoal(new WanderGoal());
+        }
     }
 
     public void AddGoal(IGoal newGoal)
     {
         goals.Enqueue(newGoal);
-        if (goals.Count == 1)
+        if (!isGoalActive)
         {
-            StartGoal();
+            StartGoal();    
         }
     }
 
     private void StartGoal()
     {
+        isGoalActive = true;
         currentGoal = goals.Dequeue();
         switch (currentGoal.GoalType)
         {
             case eGoalType.TIME:
                 catMovement.MoveToPointAndWaitForTime(currentGoal.GetGoalTarget(), (float)currentGoal.GetGoalEnd());
+                catMovement.OnFinishedWait += OnGoalDone;
                 break;
-            case eGoalType.EVENT:
-                catMovement.MoveToPointAndWaitForEvent(currentGoal.GetGoalTarget());
-                Action callback = currentGoal.GetGoalEnd() as Action;
-                callback += OnWaitDone;
+            case eGoalType.WANDER:
+                catMovement.MoveToPointWander();
+                catMovement.OnFinishedWait += OnGoalDone;
+                break;
+            case eGoalType.ENEMY:
+                catMovement.MoveToEnemy((Transform)currentGoal.GetGoalEnd());
                 break;
             default:
                 break;
         }
     }
 
-    private void OnWaitDone()
+    public void OnGoalDone()
     {
-        Action callback = currentGoal.GetGoalEnd() as Action;
-        callback += OnWaitDone;
+        isGoalActive = false;
+
+        catMovement.OnFinishedWait -= OnGoalDone;
+        NextGoal();
     }
 }

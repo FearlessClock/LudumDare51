@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4513773542438901893}
   - component: {fileID: 4513773542438901895}
   - component: {fileID: 4513773542438901894}
+  - component: {fileID: 339025107555320280}
   m_Layer: 7
   m_Name: Fox
   m_TagString: Untagged
@@ -95,6 +96,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.22741663
+--- !u!114 &339025107555320280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513773542438901914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76be82cb5b640074d8f558949477ad19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 2
 --- !u!1 &4513773542456554363
 GameObject:
   m_ObjectHideFlags: 0
