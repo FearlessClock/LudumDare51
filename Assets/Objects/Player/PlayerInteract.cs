@@ -8,12 +8,12 @@ public class PlayerInteract : MonoBehaviour
     public Player player;
 
     private IInteractable currentInteractable;
-    [SerializeField] private BoolVariable isStunned;
+    private BoolVariable isStunned;
 
     public void InitPlayer()
     {
         player = GetComponent<PlayerHandler>().player;
-
+        isStunned = GetComponent<PlayerHandler>().isStunned;
     }
 
     private void Update()

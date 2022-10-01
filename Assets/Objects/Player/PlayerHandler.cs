@@ -7,15 +7,17 @@ using UnityEngine.Events;
 public class PlayerHandler : MonoBehaviour
 {
     public Player player;
-    public int controllerId = 0;
     public int playerId;
     public UnityEvent playerLoaded;
-    [SerializeField] private BoolVariable isStunned;
+    public BoolVariable isStunned;
     private float stunnedTimer = 0;
+    [SerializeField] private Animator animator;
 
-    void Awake()
+    public void PlayerInit(int id, BoolVariable stunnedVariable)
     {
-        player = ReInput.players.GetPlayer(controllerId);
+        playerId = id;
+        player = ReInput.players.GetPlayer(playerId);
+        isStunned = stunnedVariable;
         playerLoaded?.Invoke();
     }
 

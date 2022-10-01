@@ -11,11 +11,12 @@ public class PlayerAttack : MonoBehaviour
     private Vector3 direction;
     private Vector3 previousDirection;
     [SerializeField] private BoolVariable isStunned;
+    private Animator animator;
 
     public void InitPlayer()
     {
         player = GetComponent<PlayerHandler>().player;
-
+        
     }
 
     void Update()

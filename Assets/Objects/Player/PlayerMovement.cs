@@ -11,10 +11,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 direction;
     private Vector3 previousDirection;
     [SerializeField] private BoolVariable isStunned;
+    private Animator animator;
 
     public void InitPlayer()
     {
         player = GetComponent<PlayerHandler>().player;
+        animator = GetComponent<Animator>();
+        isStunned = GetComponent<PlayerHandler>().isStunned;
 
     }
     void Update()
@@ -46,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
             }
 
             transform.position += previousDirection.normalized * speed * Time.deltaTime;
+
+            animator.SetFloat("Direction", direction.x);
         }
         if (isStunned.value)
         {
