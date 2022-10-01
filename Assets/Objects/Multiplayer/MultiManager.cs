@@ -1,20 +1,20 @@
 using Rewired;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
-public class MultiManager : MonoBehaviour
+public class MultiManager : PersistentSingleton<MultiManager>
 {
     private int playersConnected = 0;
+    public int PlayersNumber { get => playersConnected; }
     private Dictionary<int, int> PlayerToID; // Key = Player Number, Value = Rewired.Player Id
     private Dictionary<int, int> ControllerToPlayer; // Key = Rewired.Controller Id, Value = player Number
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         PlayerToID = new Dictionary<int, int>();
         ControllerToPlayer = new Dictionary<int, int>();
 
-        DontDestroyOnLoad(this);
         ReInput.ControllerConnectedEvent += OnControllerConnect;
         ReInput.ControllerPreDisconnectEvent += OnControllerDisconnect;
 
