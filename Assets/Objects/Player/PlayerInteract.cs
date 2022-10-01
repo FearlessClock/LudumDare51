@@ -7,7 +7,7 @@ public class PlayerInteract : MonoBehaviour
 {
     public Player player;
 
-    //private IInteract currentInteractable
+    private IInteractable currentInteractable;
 
     public void InitPlayer()
     {
@@ -20,17 +20,28 @@ public class PlayerInteract : MonoBehaviour
 
         if (player != null)
         {
-            if (player.GetButton("Interact") /*currentInteractable != null*/)
+            if (player.GetButton("Interact") && currentInteractable != null)
             {
-                Debug.Log("interacted");
+                currentInteractable.Interation();
+            }
+            if (player.GetButtonUp("Interact") && currentInteractable != null)
+            {
+                currentInteractable.StopInteration();
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if(collision.GetComponent<IInteract>())
+        if(collision.GetComponent<IInteractable>() != null)
+            currentInteractable = collision.GetComponent<IInteractable>();
 
-        //currentInteractable = collision.GetComponent<IInteract>();
+    }
+    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.GetComponent<IInteractable>() != null)
+            currentInteractable = null;
+
     }
 }
