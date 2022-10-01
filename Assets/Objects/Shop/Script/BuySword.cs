@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SellEgg : MonoBehaviour, IInteractable
+public class BuySword : MonoBehaviour, IInteractable
 {
     [Header("Boolean")]
     private bool isInteracting = false;
@@ -14,8 +13,14 @@ public class SellEgg : MonoBehaviour, IInteractable
     [SerializeField] private float interationTime = 0;
     private float actualIntercationTime;
     [SerializeField] private float emptyingTime = 0;
-
+    
+    [Header("Resources")] 
+    [SerializeField] private int moneyNeeded;
+    [SerializeField] private int swordGet;
+    
+    [Header("Ref")]
     [SerializeField] private Image circleIsReady;
+
     
     private void Awake()
     {
@@ -24,16 +29,16 @@ public class SellEgg : MonoBehaviour, IInteractable
 
     void Update()
     {
-       if(Input.GetMouseButtonDown(0)) Interation(); 
-       else if (Input.GetMouseButtonUp(0)) StopInteration(); 
+        if(Input.GetMouseButtonDown(2)) Interation(); 
+        else if (Input.GetMouseButtonUp(2)) StopInteration(); 
        
-       if(isInteracting) Action();
-       else if(isEmptying) EmptyGauge();
+        if(isInteracting) Action();
+        else if(isEmptying) EmptyGauge();
     }
 
     public void Interation()
     {
-        if (ResourcesManager.Instance.EggNumber <= 0) return;
+        if (ResourcesManager.Instance.MoneyCount <= moneyNeeded) return;
         isInteracting = true;
         isEmptying = false;
     }
@@ -53,13 +58,13 @@ public class SellEgg : MonoBehaviour, IInteractable
         {
             var resources = ResourcesManager.Instance;
             
-            resources.RemoveEgg(1);
-            resources.AddMoney(10);
+            resources.RemoveMoney(moneyNeeded);
+            resources.AddSword(swordGet);
                 
             circleIsReady.fillAmount = 0;
             actualIntercationTime = interationTime;
 
-            if (resources.EggNumber <= 0)  StopInteration();
+            if (resources.MoneyCount < moneyNeeded)  StopInteration();
             
         }
     }
