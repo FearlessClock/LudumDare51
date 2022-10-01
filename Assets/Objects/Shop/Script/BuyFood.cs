@@ -15,11 +15,13 @@ public class BuyFood : MonoBehaviour, IInteractable
     [SerializeField] private float emptyingTime = 0;
     
     [Header("Resources")] 
-    [SerializeField] private int moneyNeeded;
-    [SerializeField] private int foodGet;
+    //[SerializeField] private int moneyNeeded;
+    //[SerializeField] private int foodGet;
     
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
+
+    [SerializeField] private FoodContainer foodContainer;
 
     
     private void Awake()
@@ -38,7 +40,7 @@ public class BuyFood : MonoBehaviour, IInteractable
 
     public void Interation()
     {
-        if (ResourcesManager.Instance.MoneyCount <= moneyNeeded) return;
+        //if (ResourcesManager.Instance.MoneyCount <= moneyNeeded) return;
         isInteracting = true;
         isEmptying = false;
     }
@@ -58,13 +60,12 @@ public class BuyFood : MonoBehaviour, IInteractable
         {
             var resources = ResourcesManager.Instance;
             
-            resources.RemoveMoney(moneyNeeded);
-            resources.AddFood(foodGet);
+            foodContainer.RefillFood();
                 
             circleIsReady.fillAmount = 0;
             actualIntercationTime = interationTime;
 
-            if (resources.MoneyCount < moneyNeeded)  StopInteration();
+            //if (resources.MoneyCount < moneyNeeded)  StopInteration();
             
         }
     }

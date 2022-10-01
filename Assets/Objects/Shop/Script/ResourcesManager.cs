@@ -10,9 +10,6 @@ public class ResourcesManager : Singleton<ResourcesManager>
     [SerializeField] private int moneyCount;
     public int MoneyCount => moneyCount;
     
-    [SerializeField] private int foodCount;
-    public int FoodCount => foodCount;
-    
     [SerializeField] private int swordCount;
     public int SwordCount => swordCount;
     
@@ -37,16 +34,6 @@ public class ResourcesManager : Singleton<ResourcesManager>
     public void RemoveMoney(int money)
     {
         moneyCount -= money;
-    }
-    
-    public void AddFood(int food)
-    {
-        foodCount += food;
-    }
-    
-    public void RemoveFood(int food)
-    {
-        foodCount -= food;
     }
     
     public void AddSword(int sword)
