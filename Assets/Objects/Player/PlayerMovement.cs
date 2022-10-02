@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     Player player;
     [SerializeField] private float maxSpeed;
+    [SerializeField] private float accelerationRate;
+    [SerializeField] private float decelerationRate;
     private float speed = 0;
     private Vector3 direction;
     private Vector3 previousDirection;
@@ -32,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
                 previousDirection = direction;
                 if (speed < maxSpeed)
                 {
-                    speed += .005f;
+                    speed += accelerationRate * TimeManager.fixedDeltaTime;
                     if (speed > maxSpeed)
                     {
                         speed = maxSpeed;
@@ -41,14 +43,14 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (direction.sqrMagnitude < .2f && speed > 0)
             {
-                speed -= .01f;
+                speed -= decelerationRate * TimeManager.fixedDeltaTime;
                 if (speed < 0)
                 {
                     speed = 0;
                 }
             }
 
-            transform.position += previousDirection.normalized * speed * Time.deltaTime;
+            transform.position += previousDirection.normalized * speed * TimeManager.deltaTime;
 
             animator.SetFloat("Direction", direction.x);
         }

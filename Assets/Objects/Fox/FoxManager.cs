@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoxManager : PersistentSingleton<FoxManager>
+public class FoxManager : Singleton<FoxManager>
 {
     public List<GameObject> foxes;
     [SerializeField] private EventObjectScriptable foxDiedEvent;
