@@ -45,7 +45,7 @@ public class GameManager : PersistentSingleton<GameManager>
             StopCoroutine(loadingCoroutine);
         loadingCoroutine = StartCoroutine(AfterLoading(name, then));
     }
-
+    
     private IEnumerator AfterLoading(string name, Action then)
     {
         LoadScene(name);

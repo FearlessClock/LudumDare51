@@ -50,3 +50,6 @@ TagManager:
   - name: Entities
     uniqueID: 2979223731
     locked: 0
+  - name: Fade
+    uniqueID: 2692838363
+    locked: 0
