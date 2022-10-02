@@ -133,6 +133,8 @@ GameObject:
   - component: {fileID: 7092969286602488389}
   - component: {fileID: 8385098514396774581}
   - component: {fileID: 9117587088612773100}
+  - component: {fileID: 2501067923380170588}
+  - component: {fileID: 3137600861257328386}
   m_Layer: 6
   m_Name: Cat
   m_TagString: Untagged
@@ -275,7 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySeeRange: 3
   hitDistance: 0.61
-  hitCooldownTime: 10
+  hitCooldownTime: 2
 --- !u!114 &9117587088612773100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,3 +291,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 4
+--- !u!114 &2501067923380170588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092969286602488412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfe2d922c42ad2428cdc8cf18d4ffdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3137600861257328386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092969286602488412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed226db8a2f87554196acdd566bad056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeTillAdult: 10
+  timeTillChild: 10
+  agingPercentage: 0.8

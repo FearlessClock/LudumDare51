@@ -7,8 +7,8 @@ public class CatAttackController : MonoBehaviour
     [SerializeField] private float enemySeeRange = 10;
     [SerializeField] private float hitDistance = 10;
     [SerializeField] private float hitCooldownTime = 10;
-    private CatMovement catMovement = null;
     private CatGoalHandler catGoalHandler = null;
+    private CatEquipment catEquipment = null;
     private float hitCooldownTimer = 0;
     private bool hasAttacked = false;
     private GameObject currentTarget = null;
@@ -16,52 +16,55 @@ public class CatAttackController : MonoBehaviour
 
     private void Awake()
     {
-        catMovement = GetComponent<CatMovement>();
+        catEquipment = GetComponent<CatEquipment>();
         catGoalHandler = GetComponent<CatGoalHandler>();
     }
 
     private void Update()
     {
-        checkWait--;
-        if(checkWait <= 0 && !currentTarget)
+        if(catEquipment && catEquipment.HasEquipment)
         {
-            checkWait=300;
-            List<GameObject> closeFoxes = new List<GameObject>();
-            for (int i = 0; i < FoxManager.Instance.foxes.Count; i++)
+            checkWait--;
+            if (checkWait <= 0 && !currentTarget)
             {
-                if ((FoxManager.Instance.foxes[i].transform.position - this.transform.position).sqrMagnitude < enemySeeRange)
+                checkWait = 300;
+                List<GameObject> closeFoxes = new List<GameObject>();
+                for (int i = 0; i < FoxManager.Instance.foxes.Count; i++)
                 {
-                    closeFoxes.Add(FoxManager.Instance.foxes[i]);
+                    if ((FoxManager.Instance.foxes[i].transform.position - this.transform.position).sqrMagnitude < enemySeeRange)
+                    {
+                        closeFoxes.Add(FoxManager.Instance.foxes[i]);
+                    }
+                }
+                if (closeFoxes.Count > 0)
+                {
+                    currentTarget = closeFoxes[Random.Range(0, closeFoxes.Count)];
+                    catGoalHandler.AddGoal(new FollowEnemyGoal(currentTarget.transform));
                 }
             }
-            if(closeFoxes.Count > 0)
+            else if (checkWait <= 0)
             {
-                currentTarget = closeFoxes[Random.Range(0, closeFoxes.Count)];
-                catGoalHandler.AddGoal(new FollowEnemyGoal(currentTarget.transform));
+                checkWait = 300;
             }
-        }
-        else if(checkWait <= 0)
-        {
-            checkWait = 300;
-        }
-        if(currentTarget)
-        {
-            if (hasAttacked)
+            if (currentTarget)
             {
-                hitCooldownTimer -= TimeManager.deltaTime;
-                if (hitCooldownTimer < 0)
+                if (hasAttacked)
                 {
-                    hasAttacked = false;
+                    hitCooldownTimer -= TimeManager.deltaTime;
+                    if (hitCooldownTimer < 0)
+                    {
+                        hasAttacked = false;
+                    }
                 }
-            }
 
-            if (currentTarget && (currentTarget.transform.position - this.transform.position).sqrMagnitude < hitDistance && !hasAttacked)
-            {
-                hitCooldownTimer = hitCooldownTime;
-                hasAttacked = true;
-                if (currentTarget.GetComponent<HealthController>().Hit(1))
+                if (currentTarget && (currentTarget.transform.position - this.transform.position).sqrMagnitude < hitDistance && !hasAttacked)
                 {
-                    catGoalHandler.OnGoalDone();
+                    hitCooldownTimer = hitCooldownTime;
+                    hasAttacked = true;
+                    if (currentTarget.GetComponent<HealthController>().Hit(1))
+                    {
+                        catGoalHandler.OnGoalDone();
+                    }
                 }
             }
         }
