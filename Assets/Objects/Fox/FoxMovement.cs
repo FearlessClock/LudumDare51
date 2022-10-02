@@ -43,11 +43,12 @@ public class FoxMovement : MonoBehaviour
 
     private float timeAttack = 0.0f;
     [SerializeField]private float attackBuffer = 1.0f;
-
+    private Animator animator;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         scaryObjects = FindObjectsOfType<ScaryObject>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -73,15 +74,22 @@ public class FoxMovement : MonoBehaviour
         {
             case FoxState.WANDERING:
                 acceleration = WanderingState(acceleration);
+                animator.SetTrigger("Walk");
                 break;
             case FoxState.MOVING_TO_TARGET:
                 acceleration = MoveToTargetState(acceleration);
+                animator.SetTrigger("Walk");
+
                 break;
             case FoxState.ATTACKING:
                 acceleration = AttackingState(acceleration);
+                animator.SetTrigger("Idle");
+
                 break;
             case FoxState.WAITING_FOR_END_OF_EVENT:
                 acceleration = WaitingAtTarget();
+                animator.SetTrigger("Idle");
+
                 break;
             default:
                 break;
@@ -96,12 +104,14 @@ public class FoxMovement : MonoBehaviour
         if (timer >= timeBeforeAttack)
             currentState = FoxState.ATTACKING;
 
+        int x = acceleration.x > 0 ? -1 : 1;
+        animator.SetFloat("Direction", x);
+
         rb.MovePosition(this.transform.position + velocity);
     }
 
     private Vector3 AttackingState(Vector3 acceleration)
     {
-
         FindCatTarget();
         if (catTarget)
             currentTarget = catTarget.transform.position;

@@ -21,8 +21,9 @@ public class CatManager : Singleton<CatManager>
     [SerializeField] private EventScriptable swordBought;
     [SerializeField] private int numberOfStartingCats = 3;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         cats = new List<cat>();
         AddNewCat();
         AddNewCat();
@@ -87,8 +88,8 @@ public class CatManager : Singleton<CatManager>
         {
             if (cats[i].catObject.gameObject == obj)
             {
+                cats[i].catObject.GrowUp -= CatGrowUp; 
                 cats.RemoveAt(i);
-                cats[i].catObject.GrowUp -= CatGrowUp;
                 Destroy(obj);
                 return;
             }
@@ -107,6 +108,7 @@ public class CatManager : Singleton<CatManager>
                     cats[i].catEquipment.Equip(true, false);
                     ResourcesManager.Instance.RemoveSword(1);
                     cats[i].catSpriteHandler.UpdateCatSprite();
+                    return;
                 }
             }
         }
@@ -124,6 +126,7 @@ public class CatManager : Singleton<CatManager>
                     cats[i].catEquipment.Equip(false, true);
                     ResourcesManager.Instance.RemoveArmor(1);
                     cats[i].catSpriteHandler.UpdateCatSprite();
+                    return;
                 }
             }
         }
