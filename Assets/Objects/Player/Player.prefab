@@ -157,7 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6768a9743e1fb8c4f9b0724f4e1e9799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 3
+  maxSpeed: 4
+  accelerationRate: 2.5
+  decelerationRate: 3.5
   isStunned: {fileID: 11400000, guid: e4fba156cf57fd247aa3c5956d113cac, type: 2}
 --- !u!114 &7286176353677943152
 MonoBehaviour:

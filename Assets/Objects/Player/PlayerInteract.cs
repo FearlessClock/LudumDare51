@@ -9,7 +9,7 @@ public class PlayerInteract : MonoBehaviour
 
     private IInteractable currentInteractable;
     private BoolVariable isStunned;
-    private bool isInBreedingArea;
+    private BreedingBox isInBreedingArea;
 
     public void InitPlayer()
     {
@@ -25,18 +25,21 @@ public class PlayerInteract : MonoBehaviour
         {
             if (player.GetButton("Interact") )
             {
-                if (isInBreedingArea)
+                if (isInBreedingArea != null)
                 {
-                    Debug.Log("breed");
+                    isInBreedingArea.Interation();
                 }
                 else if(currentInteractable != null)
                 {
                     currentInteractable.Interation();
                 }
             }
-            else if (player.GetButtonUp("Interact") && currentInteractable != null)
+            else if (player.GetButtonUp("Interact"))
             {
-                currentInteractable.StopInteration();
+                if (currentInteractable != null)
+                    currentInteractable.StopInteration();
+                else if (isInBreedingArea != null)
+                    isInBreedingArea.StopInteration();
             }
         }
     }
@@ -59,7 +62,7 @@ public class PlayerInteract : MonoBehaviour
         }
         else if (collision.CompareTag("BreedingZone"))
         {
-            isInBreedingArea = true;
+            isInBreedingArea = collision.GetComponent<BreedingBox>();
         }
     }
 
@@ -72,7 +75,7 @@ public class PlayerInteract : MonoBehaviour
         }
         else if (collision.CompareTag("BreedingZone"))
         {
-            isInBreedingArea = false;
+            isInBreedingArea = null;
         }
     }
 }
