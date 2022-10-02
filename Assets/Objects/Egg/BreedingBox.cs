@@ -16,6 +16,7 @@ public class BreedingBox : MonoBehaviour, IInteractable
     [SerializeField] private SpriteRenderer[] eggs;
 
     [SerializeField] private Image circleIsReady;
+    [SerializeField] private GameObject circle;
     [SerializeField] private float hatchTime = 5;
 
     private void Start()
@@ -23,6 +24,7 @@ public class BreedingBox : MonoBehaviour, IInteractable
         eggHatchingTimer = new List<float>();
         UpdateEggImages();
         actualIntercationTime = interationTime;
+        circle.SetActive(false);
     }
 
     private void Update()
@@ -76,6 +78,7 @@ public class BreedingBox : MonoBehaviour, IInteractable
     public void Interation()
     {
         if (ResourcesManager.Instance.EggNumber <= 0 || eggsHatching >= maxEggsHatching) return;
+        circle.SetActive(true);
         isInteracting = true;
         isEmptying = false;
     }
@@ -110,7 +113,11 @@ public class BreedingBox : MonoBehaviour, IInteractable
         circleIsReady.fillAmount = 1 - (actualIntercationTime / interationTime);
 
 
-        if (circleIsReady.fillAmount <= 0) isEmptying = false;
+        if (circleIsReady.fillAmount <= 0)
+        {
+            isEmptying = false;
+            circle.SetActive(false);
+        }
     }
 
 }

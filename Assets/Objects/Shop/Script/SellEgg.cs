@@ -21,10 +21,13 @@ public class SellEgg : MonoBehaviour, IInteractable
     
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
-    
+    [SerializeField] private GameObject circle;
+
+
     private void Awake()
     {
         actualIntercationTime = interationTime;
+        circle.SetActive(false);
     }
 
     void Update()
@@ -39,6 +42,7 @@ public class SellEgg : MonoBehaviour, IInteractable
     public void Interation()
     {
         if (ResourcesManager.Instance.EggNumber <= eggNeeded) return;
+        circle.SetActive(true);
         isInteracting = true;
         isEmptying = false;
     }
@@ -74,8 +78,12 @@ public class SellEgg : MonoBehaviour, IInteractable
         actualIntercationTime += Time.deltaTime * 2;
         actualIntercationTime = Mathf.Clamp(actualIntercationTime, 0, interationTime);
         circleIsReady.fillAmount = 1 - (actualIntercationTime / interationTime);
-        
 
-        if (circleIsReady.fillAmount <= 0) isEmptying = false;
+
+        if (circleIsReady.fillAmount <= 0)
+        {
+            circle.SetActive(false);
+            isEmptying = false;
+        }
     }
 }

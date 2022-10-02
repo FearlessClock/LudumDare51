@@ -9,7 +9,7 @@ public class PlayerInteract : MonoBehaviour
 
     private IInteractable currentInteractable;
     private BoolVariable isStunned;
-    private BreedingBox isInBreedingArea;
+    private BowlController bowlController;
 
     public void InitPlayer()
     {
@@ -23,13 +23,9 @@ public class PlayerInteract : MonoBehaviour
 
         if (player != null && !isStunned.value)
         {
-            if (player.GetButton("Interact") )
+            if (player.GetButton("Interact"))
             {
-                if (isInBreedingArea != null)
-                {
-                    isInBreedingArea.Interation();
-                }
-                else if(currentInteractable != null)
+                if(currentInteractable != null)
                 {
                     currentInteractable.Interation();
                 }
@@ -38,8 +34,6 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (currentInteractable != null)
                     currentInteractable.StopInteration();
-                else if (isInBreedingArea != null)
-                    isInBreedingArea.StopInteration();
             }
         }
     }
@@ -60,10 +54,6 @@ public class PlayerInteract : MonoBehaviour
             ResourcesManager.Instance.AddEgg(1);
             Destroy(collision.gameObject);
         }
-        else if (collision.CompareTag("BreedingZone"))
-        {
-            isInBreedingArea = collision.GetComponent<BreedingBox>();
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -72,10 +62,6 @@ public class PlayerInteract : MonoBehaviour
         {
             currentInteractable.StopInteration();
             currentInteractable = null;
-        }
-        else if (collision.CompareTag("BreedingZone"))
-        {
-            isInBreedingArea = null;
         }
     }
 }

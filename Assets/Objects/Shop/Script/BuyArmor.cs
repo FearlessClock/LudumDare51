@@ -21,12 +21,14 @@ public class BuyArmor : MonoBehaviour, IInteractable
     
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
+    [SerializeField] private GameObject circle;
 
     [SerializeField] private EventScriptable armorBought;
 
     private void Awake()
     {
         actualIntercationTime = interationTime;
+        circle.SetActive(false);
     }
 
     void Update()
@@ -41,6 +43,7 @@ public class BuyArmor : MonoBehaviour, IInteractable
     public void Interation()
     {
         if (ResourcesManager.Instance.MoneyCount <= moneyNeeded) return;
+        circle.SetActive(true);
         isInteracting = true;
         isEmptying = false;
     }
@@ -76,8 +79,12 @@ public class BuyArmor : MonoBehaviour, IInteractable
         actualIntercationTime += Time.deltaTime * 2;
         actualIntercationTime = Mathf.Clamp(actualIntercationTime, 0, interationTime);
         circleIsReady.fillAmount = 1 - (actualIntercationTime / interationTime);
-        
 
-        if (circleIsReady.fillAmount <= 0) isEmptying = false;
+
+        if (circleIsReady.fillAmount <= 0)
+        {
+            isEmptying = false;
+            circle.SetActive(false);
+        }
     }
 }
