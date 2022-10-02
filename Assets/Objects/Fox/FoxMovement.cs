@@ -129,7 +129,7 @@ public class FoxMovement : MonoBehaviour
     private void FindCatTarget()
     {
         if (!catTarget)
-            catTarget = CatManager.Instance.cats[Random.Range(0, CatManager.Instance.cats.Count)];
+            catTarget = CatManager.Instance.cats[Random.Range(0, CatManager.Instance.cats.Count)].catObject.gameObject;
     }
 
     private Vector3 WaitingAtTarget()
