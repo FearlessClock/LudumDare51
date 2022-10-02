@@ -1,3 +1,4 @@
+using HelperScripts.EventSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class HealthController : MonoBehaviour
 {
     [SerializeField] private float healthPoints = 2;
+    [SerializeField] private EventObjectScriptable diedEvent; 
     public bool Hit(float damage)
     {
         healthPoints -= damage;
@@ -16,9 +18,14 @@ public class HealthController : MonoBehaviour
         }
         return false;
     }
+    
+    public void AddHealth(float health)
+    {
+        healthPoints += health;
+    }
 
     private void Die()
     {
-        Destroy(this.gameObject);
+        diedEvent?.Call(this.gameObject);
     }
 }

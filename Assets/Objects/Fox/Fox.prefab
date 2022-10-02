@@ -54,11 +54,12 @@ MonoBehaviour:
   drag: 0.7
   closeDistance: 0.5
   maxSpeed: 1
-  maxWanderDistance: 3.98
+  maxWanderDistance: 3
   avoidDistance: 1
   avoidanceMultiplier: 0.8
   attackRange: 1.05
-  timeBeforeAttack: 5
+  timeBeforeAttack: 10
+  catTarget: {fileID: 0}
 --- !u!50 &4513773542438901895
 Rigidbody2D:
   serializedVersion: 4
@@ -109,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 2
+  diedEvent: {fileID: 11400000, guid: 79c3fcc8351138944b066d3469b9d146, type: 2}
 --- !u!1 &4513773542456554363
 GameObject:
   m_ObjectHideFlags: 0
