@@ -19,21 +19,25 @@ public class ResourcesManager : Singleton<ResourcesManager>
     public void AddEgg(int egg)
     {
         eggNumber += egg;
+        UIManager.Instance.EggCount.text = eggNumber.ToString();
     }
     
     public void RemoveEgg(int egg)
     {
         eggNumber -= egg;
+        UIManager.Instance.EggCount.text = eggNumber.ToString();
     }
     
     public void AddMoney(int money)
     {
         moneyCount += money;
+        UIManager.Instance.CoinCount.text = moneyCount.ToString();
     }
     
     public void RemoveMoney(int money)
     {
         moneyCount -= money;
+        UIManager.Instance.CoinCount.text = moneyCount.ToString();
     }
     
     public void AddSword(int sword)
