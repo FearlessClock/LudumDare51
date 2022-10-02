@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
                 RaycastHit2D hit = Physics2D.CircleCast(transform.position + previousDirection.normalized, attackRange, previousDirection, .01f, enemyMask);
                 if (hit.collider != null)
                 {
-                    Debug.Log("attack");
+                    hit.collider.GetComponent<HealthController>().Hit(1);
                 }
             }
         }

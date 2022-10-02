@@ -1,3 +1,4 @@
+using HelperScripts.EventSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,12 @@ using UnityEngine;
 public class FoxManager : PersistentSingleton<FoxManager>
 {
     public List<GameObject> foxes;
+    [SerializeField] private EventObjectScriptable foxDiedEvent;
 
     protected override void Awake()
     {
         base.Awake();
+        foxDiedEvent?.AddListener(FoxDied);
     }
     
     public void DeleteAllFoxes()
@@ -18,5 +21,18 @@ public class FoxManager : PersistentSingleton<FoxManager>
             Destroy(foxes[i]);
         }
     }
-        
+
+    public void FoxDied(object fox)
+    {
+        GameObject obj = (GameObject)fox;
+        for (int i = 0; i < foxes.Count; i++)
+        {
+            if(foxes[i] == obj)
+            {
+                foxes.RemoveAt(i);
+                Destroy(obj);
+                return;
+            }
+        }
+    }
 }

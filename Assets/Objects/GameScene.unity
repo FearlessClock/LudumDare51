@@ -779,6 +779,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9117587088612773100, guid: dd2eaf197681fb241be5d6c19402a630, type: 3}
+      propertyPath: diedEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 79c3fcc8351138944b066d3469b9d146, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd2eaf197681fb241be5d6c19402a630, type: 3}
 --- !u!1001 &719169021
@@ -1641,7 +1645,7 @@ MonoBehaviour:
   foxInitialTargets:
   - {fileID: 160602724}
   - {fileID: 1498597568}
-  time: 0
+  time: 10
 --- !u!114 &1879059994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1655,6 +1659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foxes: []
+  foxDiedEvent: {fileID: 11400000, guid: 79c3fcc8351138944b066d3469b9d146, type: 2}
 --- !u!4 &1879059995
 Transform:
   m_ObjectHideFlags: 0
