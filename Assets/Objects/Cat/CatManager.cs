@@ -20,8 +20,9 @@ public class CatManager : Singleton<CatManager>
 
     private void Start()
     {
+        cats = new List<cat>();
         AddNewCat();
-        catDied.AddListener(CatDied);
+        catDied.AddListener(CatDied); 
     }
 
 
@@ -76,6 +77,7 @@ public class CatManager : Singleton<CatManager>
             if (cats[i].catObject == obj)
             {
                 cats.RemoveAt(i);
+                cats[i].catObject.GrowUp -= CatGrowUp;
                 Destroy(obj);
                 return;
             }
@@ -113,5 +115,10 @@ public class CatManager : Singleton<CatManager>
     {
         if(catAge == eCatAge.ADULT)
             catsUpdated?.Call();
+    }
+
+    private void OnDestroy()
+    {
+        catDied.RemoveListener(CatDied);
     }
 }
