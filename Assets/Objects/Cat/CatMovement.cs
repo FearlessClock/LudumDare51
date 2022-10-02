@@ -8,7 +8,7 @@ using UnityEngine.TextCore.Text;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
-public enum CatState { WANDERING, MOVING_TO_TARGET, WAITING_FOR_END_OF_EVENT}
+public enum CatState { WAITING, WANDERING, MOVING_TO_TARGET, WAITING_FOR_END_OF_EVENT, FOLLOWING_ENEMY}
 
 public class CatMovement : MonoBehaviour
 {
@@ -38,9 +38,14 @@ public class CatMovement : MonoBehaviour
     private bool isWaitingForWaitActionCallback = false;
     private bool hasWanderTarget = false;
 
-    private CatState currentState = CatState.WANDERING;
+    private CatState currentState = CatState.WAITING;
 
     public Action OnReachTarget = null;
+    public Action OnFinishedWait = null;
+
+    private Transform followingEnemy = null;
+    [SerializeField] private float closeToEnemyDistance = 1;
+    [SerializeField] private float tooCloseToEnemyDistance = 0.3f;
 
     private void Awake()
     {
@@ -57,19 +62,18 @@ public class CatMovement : MonoBehaviour
         currentState = CatState.MOVING_TO_TARGET;
     }
 
-    public void MoveToPointAndWaitForEvent(Vector3 targetPosition)
+    public void MoveToPointWander()
     {
-        currentTarget = targetPosition;
+        GetNewWanderTarget();
         hasCurrentGoal = true;
-        hasWanderTarget = false;
-        isWaitingForWaitActionCallback = true;
         currentState = CatState.MOVING_TO_TARGET;
     }
 
-    public void OnWaitDone()
+    public void MoveToEnemy(Transform enemy)
     {
-        currentState = CatState.WANDERING;
-        isWaitingForWaitActionCallback = false;
+        followingEnemy = enemy;
+        hasCurrentGoal = true;
+        currentState = CatState.FOLLOWING_ENEMY;
     }
 
     private void FixedUpdate()
@@ -83,7 +87,13 @@ public class CatMovement : MonoBehaviour
                 acceleration = MoveToTargetState(acceleration);
                 break;
             case CatState.WAITING_FOR_END_OF_EVENT:
-                acceleration = WaitingAtTarget() ;
+                acceleration = WaitingAtTarget();
+                break;
+            case CatState.WAITING:
+                acceleration = Vector3.zero;
+                break;
+            case CatState.FOLLOWING_ENEMY:
+                acceleration = FollowEnemey();
                 break;
             default:
                 break;
@@ -98,6 +108,21 @@ public class CatMovement : MonoBehaviour
         rb.MovePosition(this.transform.position +  velocity) ;
     }
 
+    private Vector3 FollowEnemey()
+    {
+        if (Vector3.Distance(followingEnemy.position, this.transform.position) > closeToEnemyDistance)
+        {
+            acceleration = movementSpeed * (followingEnemy.position - this.transform.position).normalized;
+        }
+        else if (Vector3.Distance(followingEnemy.position, this.transform.position) < tooCloseToEnemyDistance)
+        {
+            acceleration = -movementSpeed * (followingEnemy.position - this.transform.position).normalized;
+        }
+        acceleration += CalculateAvoidance();
+        acceleration *= TimeManager.fixedDeltaTime;
+        return acceleration;
+    }
+
     private Vector3 WaitingAtTarget()
     {
         if (isWaitingForWaitActionCallback)
@@ -110,7 +135,8 @@ public class CatMovement : MonoBehaviour
 
             if (waitTimer < 0)
             {
-                currentState = CatState.WANDERING;
+                currentState = CatState.WAITING;
+                OnFinishedWait?.Invoke();
             }
 
             return Vector3.zero;
@@ -132,7 +158,7 @@ public class CatMovement : MonoBehaviour
         acceleration += CalculateAvoidance();
         acceleration *= TimeManager.fixedDeltaTime;
         return acceleration;
-    }
+    } 
 
     private Vector3 WanderingState(Vector3 acceleration)
     {

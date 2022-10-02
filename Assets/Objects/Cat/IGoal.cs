@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum eGoalType { TIME, EVENT}
+public enum eGoalType { TIME, WANDER, ENEMY}
 public interface IGoal
 {
     eGoalType GoalType { get; }
