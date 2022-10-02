@@ -1,3 +1,4 @@
+using HelperScripts.EventSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,8 @@ public class BuyArmor : MonoBehaviour, IInteractable
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
 
-    
+    [SerializeField] private EventScriptable armorBought;
+
     private void Awake()
     {
         actualIntercationTime = interationTime;
@@ -60,7 +62,7 @@ public class BuyArmor : MonoBehaviour, IInteractable
             
             resources.RemoveMoney(moneyNeeded);
             resources.AddArmor(armorGet);
-                
+            armorBought?.Call(); 
             circleIsReady.fillAmount = 0;
             actualIntercationTime = interationTime;
 
