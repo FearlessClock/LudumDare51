@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using HelperScripts.EventSystem;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -41,11 +42,19 @@ public class UIManager : Singleton<UIManager>
         get => swordCatCount;
         set => swordCatCount = value;
     }
+
+    [SerializeField] private EventScriptable catUpdator;
     
     private void Start()
     {
         eggCount.text = ResourcesManager.Instance.EggNumber.ToString();
         coinCount.text = ResourcesManager.Instance.MoneyCount.ToString();
+        updateCat();
+        catUpdator.AddListener(updateCat);
+    }
+
+    void updateCat()
+    {
         catCount.text = CatManager.Instance.NumberOfTotalCats().ToString();
         loveCatCount.text = CatManager.Instance.NumberOfEggCats().ToString();
         swordCatCount.text = CatManager.Instance.NumberOfFightingCats().ToString();
