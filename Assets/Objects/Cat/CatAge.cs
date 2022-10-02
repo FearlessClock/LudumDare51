@@ -18,6 +18,7 @@ public class CatAge : MonoBehaviour
     public Action<eCatAge> GrowUp = null;
 
     public eCatAge GetAge => currentAge;
+    public eCatAge SetAge{ set { currentAge = value; } }
 
     private void Awake()
     {

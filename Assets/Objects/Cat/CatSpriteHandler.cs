@@ -23,10 +23,10 @@ public class CatSpriteHandler : MonoBehaviour
         {
             if (catEquipment.HasArmor)
             {
-                i = 3;
+                i = 4;
             }else if (catEquipment.HasSword)
             {
-                i = 4;
+                i = 3;
             }
             else
             {

@@ -19,14 +19,22 @@ public class CatManager : Singleton<CatManager>
     [SerializeField] private EventScriptable catsUpdated;
     [SerializeField] private EventScriptable armorBought;
     [SerializeField] private EventScriptable swordBought;
+    [SerializeField] private int numberOfStartingCats = 3;
 
     private void Start()
     {
         cats = new List<cat>();
         AddNewCat();
+        AddNewCat();
+        AddNewCat();
         catDied.AddListener(CatDied);
         armorBought.AddListener(CatGiveArmor);
         swordBought.AddListener(CatGiveSword);
+        for (int i = 0; i < cats.Count; i++)
+        {
+            cats[i].catObject.SetAge = eCatAge.ADULT;
+        }
+        catsUpdated?.Call();
     }
 
 
@@ -77,7 +85,7 @@ public class CatManager : Singleton<CatManager>
         GameObject obj = (GameObject)cat;
         for (int i = 0; i < cats.Count; i++)
         {
-            if (cats[i].catObject == obj)
+            if (cats[i].catObject.gameObject == obj)
             {
                 cats.RemoveAt(i);
                 cats[i].catObject.GrowUp -= CatGrowUp;

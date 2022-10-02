@@ -46,11 +46,13 @@ public class CatMovement : MonoBehaviour
     private Transform followingEnemy = null;
     [SerializeField] private float closeToEnemyDistance = 1;
     [SerializeField] private float tooCloseToEnemyDistance = 0.3f;
+    private Animator animator;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         scaryObjects = FindObjectsOfType<ScaryObject>();
+        animator = GetComponent<Animator>();
     }
 
     public void MoveToPointAndWaitForTime(Vector3 targetPosition, float stayTime)
@@ -82,18 +84,23 @@ public class CatMovement : MonoBehaviour
         {
             case CatState.WANDERING:
                 acceleration = WanderingState(acceleration);
+                animator.SetTrigger("Walk");
                 break;
             case CatState.MOVING_TO_TARGET:
                 acceleration = MoveToTargetState(acceleration);
+                animator.SetTrigger("Walk");
                 break;
             case CatState.WAITING_FOR_END_OF_EVENT:
                 acceleration = WaitingAtTarget();
+                animator.SetTrigger("Idle");
                 break;
             case CatState.WAITING:
                 acceleration = Vector3.zero;
+                animator.SetTrigger("Idle");
                 break;
             case CatState.FOLLOWING_ENEMY:
                 acceleration = FollowEnemey();
+                animator.SetTrigger("Walk");
                 break;
             default:
                 break;

@@ -13,12 +13,16 @@ public class BreedingBox : MonoBehaviour, IInteractable
     private bool isEmptying;
     private float actualIntercationTime;
     [SerializeField] private float interationTime;
+    [SerializeField] private SpriteRenderer[] eggs;
 
     [SerializeField] private Image circleIsReady;
+    [SerializeField] private float hatchTime = 5;
 
     private void Start()
     {
         eggHatchingTimer = new List<float>();
+        UpdateEggImages();
+        actualIntercationTime = interationTime;
     }
 
     private void Update()
@@ -37,6 +41,7 @@ public class BreedingBox : MonoBehaviour, IInteractable
                     CatManager.Instance.AddNewCat();
                     eggHatchingTimer.RemoveAt(i);
                     eggsHatching--;
+                    UpdateEggImages();
                 }
             }
         }
@@ -48,12 +53,29 @@ public class BreedingBox : MonoBehaviour, IInteractable
         {
             ResourcesManager.Instance.RemoveEgg(1);
             eggsHatching++;
-            eggHatchingTimer.Add(10);
+            UpdateEggImages();
+            eggHatchingTimer.Add(hatchTime);
         }
     }
+
+    private void UpdateEggImages()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if(eggsHatching > i)
+            {
+                eggs[i].enabled = true;
+            }
+            else
+            {
+                eggs[i].enabled = false;
+            }
+        }
+    }
+
     public void Interation()
     {
-        if (ResourcesManager.Instance.EggNumber <= 0) return;
+        if (ResourcesManager.Instance.EggNumber <= 0 || eggsHatching >= maxEggsHatching) return;
         isInteracting = true;
         isEmptying = false;
     }
@@ -76,7 +98,7 @@ public class BreedingBox : MonoBehaviour, IInteractable
             circleIsReady.fillAmount = 0;
             actualIntercationTime = interationTime;
 
-            if (ResourcesManager.Instance.EggNumber <= 0) StopInteration();
+            if (ResourcesManager.Instance.EggNumber <= 0 || eggsHatching >= maxEggsHatching) StopInteration();
 
         }
     }

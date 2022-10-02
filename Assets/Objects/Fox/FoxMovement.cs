@@ -40,7 +40,6 @@ public class FoxMovement : MonoBehaviour
     private FoxState currentState = FoxState.WANDERING;
 
     public GameObject catTarget = null;
-    private bool canAttack = true;
 
     private float timeAttack = 0.0f;
     [SerializeField]private float attackBuffer = 1.0f;
@@ -94,7 +93,7 @@ public class FoxMovement : MonoBehaviour
             velocity = velocity.normalized * maxSpeed;
         }
 
-        if (timer >= timeBeforeAttack && canAttack)
+        if (timer >= timeBeforeAttack)
             currentState = FoxState.ATTACKING;
 
         rb.MovePosition(this.transform.position + velocity);
@@ -109,7 +108,6 @@ public class FoxMovement : MonoBehaviour
         else
         {
             currentState = FoxState.WANDERING;
-            canAttack = false;
             return acceleration;
         }
 
@@ -129,7 +127,7 @@ public class FoxMovement : MonoBehaviour
             if(!catTarget)
             {
                 currentState = FoxState.WANDERING;
-                canAttack = false;
+                timer = 0;
                 return acceleration;
             }
         }

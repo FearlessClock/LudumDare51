@@ -60,6 +60,7 @@ MonoBehaviour:
   attackRange: 1.05
   timeBeforeAttack: 10
   catTarget: {fileID: 0}
+  attackBuffer: 2
 --- !u!50 &4513773542438901895
 Rigidbody2D:
   serializedVersion: 4
@@ -136,7 +137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4513773542456554363}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.084, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -184,7 +185,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1689379954, guid: 92e5a77a41c162847a5ccc305479b0b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 71b75891aa58c7547a64dbcf36eeb2cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
