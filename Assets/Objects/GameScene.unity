@@ -1164,6 +1164,7 @@ MonoBehaviour:
   moneyNeeded: 20
   swordGet: 1
   circleIsReady: {fileID: 2054493690}
+  swordBought: {fileID: 11400000, guid: 4225b22e4d3633444a177f0b864d6a51, type: 2}
 --- !u!61 &1072343868
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1294,6 +1295,7 @@ MonoBehaviour:
   moneyNeeded: 20
   armorGet: 1
   circleIsReady: {fileID: 1205324221}
+  armorBought: {fileID: 11400000, guid: f2f0e185153ab9547856d19671d140b6, type: 2}
 --- !u!61 &1174999152
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1714,6 +1716,8 @@ MonoBehaviour:
   catPrefab: {fileID: 3137600861257328386, guid: dd2eaf197681fb241be5d6c19402a630, type: 3}
   catDied: {fileID: 11400000, guid: 94b495b54de660e46a9a25bd0f941e04, type: 2}
   catsUpdated: {fileID: 11400000, guid: 135e024ae0131a94783c4e2c068c36d0, type: 2}
+  armorBought: {fileID: 11400000, guid: f2f0e185153ab9547856d19671d140b6, type: 2}
+  swordBought: {fileID: 11400000, guid: 4225b22e4d3633444a177f0b864d6a51, type: 2}
 --- !u!4 &1645136966
 Transform:
   m_ObjectHideFlags: 0

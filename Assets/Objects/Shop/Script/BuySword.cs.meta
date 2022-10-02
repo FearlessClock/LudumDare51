@@ -3,7 +3,9 @@ guid: 15a8d40a9591a8c43a8591f789748058
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - circleIsReady: {instanceID: 0}
+  - swordBought: {fileID: 11400000, guid: 4225b22e4d3633444a177f0b864d6a51, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

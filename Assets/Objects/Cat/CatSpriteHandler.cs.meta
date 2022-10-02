@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 3598fd36bd7ae244eb6c19cf4c871199
+guid: da0303ff8fcccb847b41701e87f9da0c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - circleIsReady: {instanceID: 0}
-  - armorBought: {fileID: 11400000, guid: f2f0e185153ab9547856d19671d140b6, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
