@@ -9,8 +9,7 @@ public class CatManager : Singleton<CatManager>
     public class cat
     {
         public CatAge catObject;
-        public bool hasSword;
-        public bool hasArmor;
+        public CatEquipment catEquipment;
     }
 
     public List<cat> cats;
@@ -29,9 +28,8 @@ public class CatManager : Singleton<CatManager>
     public void AddNewCat()
     {
         cat newCat = new cat();
-        newCat.hasArmor = false;
-        newCat.hasSword = false;
         newCat.catObject = Instantiate<CatAge>(catPrefab, transform);
+        newCat.catEquipment = newCat.catObject.GetComponent<CatEquipment>();
         newCat.catObject.GrowUp += CatGrowUp;
         cats.Add(newCat);
         catsUpdated?.Call();
@@ -47,7 +45,7 @@ public class CatManager : Singleton<CatManager>
         int num = 0;
         for (int i = 0; i < cats.Count; i++)
         {
-            if (!cats[i].hasSword && cats[i].catObject.GetAge == eCatAge.ADULT)
+            if (!cats[i].catEquipment.HasEquipment && cats[i].catObject.GetAge == eCatAge.ADULT)
             {
                 num++;
             }
@@ -60,7 +58,7 @@ public class CatManager : Singleton<CatManager>
         int num = 0;
         for (int i = 0; i < cats.Count; i++)
         {
-            if (cats[i].hasSword)
+            if (cats[i].catEquipment.HasEquipment)
             {
                 num++;
             }
@@ -70,7 +68,6 @@ public class CatManager : Singleton<CatManager>
 
     private void CatDied(object cat)
     {
-        catsUpdated?.Call();
         GameObject obj = (GameObject)cat;
         for (int i = 0; i < cats.Count; i++)
         {
@@ -82,29 +79,31 @@ public class CatManager : Singleton<CatManager>
                 return;
             }
         }
+        catsUpdated?.Call();
     }
 
-    public bool CatGetSword()
+    private bool CatGiveSword()
     {
-        catsUpdated?.Call();
         for (int i = 0; i < cats.Count; i++)
         {
-            if (!cats[i].hasSword && cats[i].catObject.GetAge == eCatAge.ADULT)
+            if (!cats[i].catEquipment.HasSword && cats[i].catObject.GetAge == eCatAge.ADULT)
             {
-                cats[i].hasSword = true;
+                cats[i].catEquipment.Equip(true, false);
+                ResourcesManager.Instance.RemoveSword(1);
                 return true;
             }
         }
         return false;
     }
-    
-    public bool CatGetArmor()
+
+    private bool CatGiveArmor()
     {
         for (int i = 0; i < cats.Count; i++)
         {
-            if (cats[i].hasSword && !cats[i].hasArmor)
+            if (cats[i].catEquipment.HasSword && !cats[i].catEquipment.HasArmor)
             {
-                cats[i].hasArmor = true;
+                cats[i].catEquipment.Equip(false, true);
+                ResourcesManager.Instance.RemoveArmor(1);
                 return true;
             }
         }
@@ -114,7 +113,17 @@ public class CatManager : Singleton<CatManager>
     private void CatGrowUp(eCatAge catAge)
     {
         if(catAge == eCatAge.ADULT)
+        {
+            if(ResourcesManager.Instance.ArmorCount > 0)
+            {
+                CatGiveArmor();
+            }
+            if (ResourcesManager.Instance.SwordCount > 0)
+            {
+                CatGiveSword();
+            }
             catsUpdated?.Call();
+        }
     }
 
     private void OnDestroy()
