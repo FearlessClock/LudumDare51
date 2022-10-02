@@ -1,3 +1,4 @@
+using HelperScripts.EventSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class BuySword : MonoBehaviour, IInteractable
     
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
+
+    [SerializeField] private EventScriptable swordBought;
 
     
     private void Awake()
@@ -60,7 +63,7 @@ public class BuySword : MonoBehaviour, IInteractable
             
             resources.RemoveMoney(moneyNeeded);
             resources.AddSword(swordGet);
-                
+            swordBought?.Call();
             circleIsReady.fillAmount = 0;
             actualIntercationTime = interationTime;
 

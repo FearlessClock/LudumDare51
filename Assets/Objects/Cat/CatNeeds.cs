@@ -45,10 +45,16 @@ public class CatNeeds : MonoBehaviour
     {
         if (collision.CompareTag("FeedingZone"))
         {
-            currentHunger += collision.gameObject.GetComponent<BowlController>().feedRate * Time.deltaTime;
-            if (currentHunger >= maxHunger)
+            if (collision.GetComponent<BowlController>().FoodCount > 0)
             {
-                currentHunger = maxHunger;
+                var cat = collision.gameObject.GetComponent<BowlController>();
+                currentHunger += cat.feedRate * Time.deltaTime;
+                cat.RemoveFood(cat.feedRate * Time.deltaTime);
+                
+                if (currentHunger >= maxHunger)
+                {
+                    currentHunger = maxHunger;
+                }
             }
         }
     }

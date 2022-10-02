@@ -10,6 +10,7 @@ public class CatAge : MonoBehaviour
     [SerializeField] private float timeTillChild = 10;
     [SerializeField] private float agingPercentage = 0.8f;
     private CatNeeds catNeeds = null;
+    private CatSpriteHandler catSpriteHandler = null;
     private eCatAge currentAge = eCatAge.KITTEN;
 
     private float ageTimer = 0;
@@ -17,11 +18,13 @@ public class CatAge : MonoBehaviour
     public Action<eCatAge> GrowUp = null;
 
     public eCatAge GetAge => currentAge;
+    public eCatAge SetAge{ set { currentAge = value; } }
 
     private void Awake()
     {
         ageTimer = timeTillChild;
         catNeeds = GetComponent<CatNeeds>();
+        catSpriteHandler = GetComponent<CatSpriteHandler>();
     }
 
     private void Update()
@@ -41,6 +44,8 @@ public class CatAge : MonoBehaviour
                         currentAge = eCatAge.ADULT;
                         break;
                 }
+                catSpriteHandler.UpdateCatSprite();
+
                 GrowUp?.Invoke(currentAge);
                 //TODO: Change skin, do grow effect
             }

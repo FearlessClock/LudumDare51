@@ -10,18 +10,31 @@ public class CatManager : Singleton<CatManager>
     {
         public CatAge catObject;
         public CatEquipment catEquipment;
+        public CatSpriteHandler catSpriteHandler;
     }
 
     public List<cat> cats;
     [SerializeField] private CatAge catPrefab;
     [SerializeField] private EventObjectScriptable catDied;
     [SerializeField] private EventScriptable catsUpdated;
+    [SerializeField] private EventScriptable armorBought;
+    [SerializeField] private EventScriptable swordBought;
+    [SerializeField] private int numberOfStartingCats = 3;
 
     private void Start()
     {
         cats = new List<cat>();
         AddNewCat();
-        catDied.AddListener(CatDied); 
+        AddNewCat();
+        AddNewCat();
+        catDied.AddListener(CatDied);
+        armorBought.AddListener(CatGiveArmor);
+        swordBought.AddListener(CatGiveSword);
+        for (int i = 0; i < cats.Count; i++)
+        {
+            cats[i].catObject.SetAge = eCatAge.ADULT;
+        }
+        catsUpdated?.Call();
     }
 
 
@@ -30,6 +43,7 @@ public class CatManager : Singleton<CatManager>
         cat newCat = new cat();
         newCat.catObject = Instantiate<CatAge>(catPrefab, transform);
         newCat.catEquipment = newCat.catObject.GetComponent<CatEquipment>();
+        newCat.catSpriteHandler = newCat.catObject.GetComponent<CatSpriteHandler>();
         newCat.catObject.GrowUp += CatGrowUp;
         cats.Add(newCat);
         catsUpdated?.Call();
@@ -71,10 +85,10 @@ public class CatManager : Singleton<CatManager>
         GameObject obj = (GameObject)cat;
         for (int i = 0; i < cats.Count; i++)
         {
-            if (cats[i].catObject == obj)
+            if (cats[i].catObject.gameObject == obj)
             {
+                cats[i].catObject.GrowUp -= CatGrowUp; 
                 cats.RemoveAt(i);
-                cats[i].catObject.GrowUp -= CatGrowUp;
                 Destroy(obj);
                 return;
             }
@@ -82,32 +96,39 @@ public class CatManager : Singleton<CatManager>
         catsUpdated?.Call();
     }
 
-    private bool CatGiveSword()
+    private void CatGiveSword()
     {
-        for (int i = 0; i < cats.Count; i++)
+        if (ResourcesManager.Instance.SwordCount > 0)
         {
-            if (!cats[i].catEquipment.HasSword && cats[i].catObject.GetAge == eCatAge.ADULT)
+            for (int i = 0; i < cats.Count; i++)
             {
-                cats[i].catEquipment.Equip(true, false);
-                ResourcesManager.Instance.RemoveSword(1);
-                return true;
+                if (!cats[i].catEquipment.HasSword && cats[i].catObject.GetAge == eCatAge.ADULT)
+                {
+                    cats[i].catEquipment.Equip(true, false);
+                    ResourcesManager.Instance.RemoveSword(1);
+                    cats[i].catSpriteHandler.UpdateCatSprite();
+                    return;
+                }
             }
         }
-        return false;
     }
 
-    private bool CatGiveArmor()
+    private void CatGiveArmor()
     {
-        for (int i = 0; i < cats.Count; i++)
+
+        if (ResourcesManager.Instance.ArmorCount > 0)
         {
-            if (cats[i].catEquipment.HasSword && !cats[i].catEquipment.HasArmor)
+            for (int i = 0; i < cats.Count; i++)
             {
-                cats[i].catEquipment.Equip(false, true);
-                ResourcesManager.Instance.RemoveArmor(1);
-                return true;
+                if (cats[i].catEquipment.HasSword && !cats[i].catEquipment.HasArmor)
+                {
+                    cats[i].catEquipment.Equip(false, true);
+                    ResourcesManager.Instance.RemoveArmor(1);
+                    cats[i].catSpriteHandler.UpdateCatSprite();
+                    return;
+                }
             }
         }
-        return false;
     }
 
     private void CatGrowUp(eCatAge catAge)
@@ -129,5 +150,7 @@ public class CatManager : Singleton<CatManager>
     private void OnDestroy()
     {
         catDied.RemoveListener(CatDied);
+        armorBought.RemoveListener(CatGiveArmor);
+        swordBought.RemoveListener(CatGiveSword);
     }
 }

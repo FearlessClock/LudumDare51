@@ -40,12 +40,15 @@ public class FoxMovement : MonoBehaviour
     private FoxState currentState = FoxState.WANDERING;
 
     public GameObject catTarget = null;
-    private bool canAttack = true;
 
+    private float timeAttack = 0.0f;
+    [SerializeField]private float attackBuffer = 1.0f;
+    private Animator animator;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         scaryObjects = FindObjectsOfType<ScaryObject>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -66,19 +69,27 @@ public class FoxMovement : MonoBehaviour
     private void FixedUpdate()
     {
         timer += TimeManager.fixedDeltaTime;
+        timeAttack += TimeManager.fixedDeltaTime;   
         switch (currentState)
         {
             case FoxState.WANDERING:
                 acceleration = WanderingState(acceleration);
+                animator.SetTrigger("Walk");
                 break;
             case FoxState.MOVING_TO_TARGET:
                 acceleration = MoveToTargetState(acceleration);
+                animator.SetTrigger("Walk");
+
                 break;
             case FoxState.ATTACKING:
                 acceleration = AttackingState(acceleration);
+                animator.SetTrigger("Idle");
+
                 break;
             case FoxState.WAITING_FOR_END_OF_EVENT:
                 acceleration = WaitingAtTarget();
+                animator.SetTrigger("Idle");
+
                 break;
             default:
                 break;
@@ -90,36 +101,45 @@ public class FoxMovement : MonoBehaviour
             velocity = velocity.normalized * maxSpeed;
         }
 
-        if (timer >= timeBeforeAttack && canAttack)
+        if (timer >= timeBeforeAttack)
             currentState = FoxState.ATTACKING;
+
+        int x = acceleration.x > 0 ? -1 : 1;
+        animator.SetFloat("Direction", x);
 
         rb.MovePosition(this.transform.position + velocity);
     }
 
     private Vector3 AttackingState(Vector3 acceleration)
     {
-
         FindCatTarget();
         if (catTarget)
             currentTarget = catTarget.transform.position;
         else
         {
             currentState = FoxState.WANDERING;
-            canAttack = false;
             return acceleration;
         }
 
         if (Vector3.Distance(currentTarget, this.transform.position) > attackRange)
         {
             acceleration = movementSpeed * (currentTarget - this.transform.position).normalized;
+            timeAttack = 0.0f;
         }
-        else if (hasCurrentGoal)
+        else
         {
-            hasCurrentGoal = false;
-            currentState = FoxState.WAITING_FOR_END_OF_EVENT;
-            ReachedGoal();
+            if(timeAttack > attackBuffer)
+            {
+                timeAttack -= attackBuffer;
+                catTarget.GetComponent<HealthController>().Hit(1.0f);
+            }
 
-            catTarget.GetComponent<HealthController>().Hit(1.0f);
+            if(!catTarget)
+            {
+                currentState = FoxState.WANDERING;
+                timer = 0;
+                return acceleration;
+            }
         }
         acceleration += CalculateAvoidance();
         acceleration *= TimeManager.fixedDeltaTime;

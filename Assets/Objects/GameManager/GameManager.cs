@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,6 +30,7 @@ public class GameManager : PersistentSingleton<GameManager>
 
     // Button Functions
     public void CallStartPlay() => LoadScene("GameScene", GameStart);
+    public void CallQuit() => QuitGame();
     public void BackToMenu() => LoadScene("MainMenu");
 
     // Load
@@ -43,7 +45,7 @@ public class GameManager : PersistentSingleton<GameManager>
             StopCoroutine(loadingCoroutine);
         loadingCoroutine = StartCoroutine(AfterLoading(name, then));
     }
-
+    
     private IEnumerator AfterLoading(string name, Action then)
     {
         LoadScene(name);
@@ -52,5 +54,10 @@ public class GameManager : PersistentSingleton<GameManager>
             yield return new WaitForEndOfFrame();
 
         then?.Invoke();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
