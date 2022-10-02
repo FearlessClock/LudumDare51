@@ -49,5 +49,5 @@ MonoBehaviour:
     hand: {fileID: 21300000, guid: b5de87784871b2c4eb51bd1791bf52de, type: 3}
   - body: {fileID: 21300000, guid: 4d3b02522f32bc140896ed38f78a9bdc, type: 3}
     hand: {fileID: 21300000, guid: 27eed6c474cbf924abfb60ed39e00265, type: 3}
-  - body: {fileID: 21300000, guid: 894f59a43bc7a9e40a63ff92f229426c, type: 3}
-    hand: {fileID: 21300000, guid: 27eed6c474cbf924abfb60ed39e00265, type: 3}
+  - body: {fileID: 21300000, guid: a25763ad43cd6ba458a23a7ef5eb38e5, type: 3}
+    hand: {fileID: 21300000, guid: 9a0b20aca3c80bc43a65120ac36e1d5e, type: 3}
