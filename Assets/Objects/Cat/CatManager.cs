@@ -21,8 +21,9 @@ public class CatManager : Singleton<CatManager>
     [SerializeField] private EventScriptable swordBought;
     [SerializeField] private int numberOfStartingCats = 3;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         cats = new List<cat>();
         AddNewCat();
         AddNewCat();
