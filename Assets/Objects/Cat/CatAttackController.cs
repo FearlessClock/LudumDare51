@@ -31,7 +31,7 @@ public class CatAttackController : MonoBehaviour
                 List<GameObject> closeFoxes = new List<GameObject>();
                 for (int i = 0; i < FoxManager.Instance.foxes.Count; i++)
                 {
-                    if ((FoxManager.Instance.foxes[i].transform.position - this.transform.position).sqrMagnitude < enemySeeRange)
+                    if (FoxManager.Instance.foxes[i] != null && (FoxManager.Instance.foxes[i].transform.position - this.transform.position).sqrMagnitude < enemySeeRange)
                     {
                         closeFoxes.Add(FoxManager.Instance.foxes[i]);
                     }
