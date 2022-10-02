@@ -46,5 +46,8 @@ public class UIManager : Singleton<UIManager>
     {
         eggCount.text = ResourcesManager.Instance.EggNumber.ToString();
         coinCount.text = ResourcesManager.Instance.MoneyCount.ToString();
+        catCount.text = CatManager.Instance.NumberOfTotalCats().ToString();
+        loveCatCount.text = CatManager.Instance.NumberOfEggCats().ToString();
+        swordCatCount.text = CatManager.Instance.NumberOfFightingCats().ToString();
     }
 }
