@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 9117587088612773100}
   - component: {fileID: 2501067923380170588}
   - component: {fileID: 3137600861257328386}
+  - component: {fileID: 1302348832026671461}
   m_Layer: 6
   m_Name: Cat
   m_TagString: Untagged
@@ -176,8 +177,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1125ac20ba0f5ab4d9b5b315ce8067ba, type: 3}
   - {fileID: 21300000, guid: 86e55638ceecab846a059f065c53865a, type: 3}
   - {fileID: 21300000, guid: 414c3da806b98c84893d906b48994d38, type: 3}
-  - {fileID: 21300000, guid: 414c3da806b98c84893d906b48994d38, type: 3}
-  - {fileID: 21300000, guid: 414c3da806b98c84893d906b48994d38, type: 3}
+  - {fileID: 21300000, guid: 601aea01e7ba8ef45878a9485c92bfe4, type: 3}
+  - {fileID: 21300000, guid: c2bd3cc4e07d06a49824fa931af04c54, type: 3}
 --- !u!114 &7092969286602488414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 4
-  diedEvent: {fileID: 11400000, guid: 79c3fcc8351138944b066d3469b9d146, type: 2}
+  diedEvent: {fileID: 11400000, guid: 94b495b54de660e46a9a25bd0f941e04, type: 2}
 --- !u!114 &2501067923380170588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,3 +340,23 @@ MonoBehaviour:
   timeTillAdult: 10
   timeTillChild: 10
   agingPercentage: 0.8
+--- !u!95 &1302348832026671461
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092969286602488412}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f50e32fe8e39d541a17fcca41a1c420, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

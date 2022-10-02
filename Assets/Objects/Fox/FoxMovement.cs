@@ -40,7 +40,9 @@ public class FoxMovement : MonoBehaviour
     private FoxState currentState = FoxState.WANDERING;
 
     public GameObject catTarget = null;
-    private bool canAttack = true;
+
+    private float timeAttack = 0.0f;
+    [SerializeField]private float attackBuffer = 1.0f;
 
     private void Awake()
     {
@@ -66,6 +68,7 @@ public class FoxMovement : MonoBehaviour
     private void FixedUpdate()
     {
         timer += TimeManager.fixedDeltaTime;
+        timeAttack += TimeManager.fixedDeltaTime;   
         switch (currentState)
         {
             case FoxState.WANDERING:
@@ -90,7 +93,7 @@ public class FoxMovement : MonoBehaviour
             velocity = velocity.normalized * maxSpeed;
         }
 
-        if (timer >= timeBeforeAttack && canAttack)
+        if (timer >= timeBeforeAttack)
             currentState = FoxState.ATTACKING;
 
         rb.MovePosition(this.transform.position + velocity);
@@ -105,21 +108,28 @@ public class FoxMovement : MonoBehaviour
         else
         {
             currentState = FoxState.WANDERING;
-            canAttack = false;
             return acceleration;
         }
 
         if (Vector3.Distance(currentTarget, this.transform.position) > attackRange)
         {
             acceleration = movementSpeed * (currentTarget - this.transform.position).normalized;
+            timeAttack = 0.0f;
         }
-        else if (hasCurrentGoal)
+        else
         {
-            hasCurrentGoal = false;
-            currentState = FoxState.WAITING_FOR_END_OF_EVENT;
-            ReachedGoal();
+            if(timeAttack > attackBuffer)
+            {
+                timeAttack -= attackBuffer;
+                catTarget.GetComponent<HealthController>().Hit(1.0f);
+            }
 
-            catTarget.GetComponent<HealthController>().Hit(1.0f);
+            if(!catTarget)
+            {
+                currentState = FoxState.WANDERING;
+                timer = 0;
+                return acceleration;
+            }
         }
         acceleration += CalculateAvoidance();
         acceleration *= TimeManager.fixedDeltaTime;

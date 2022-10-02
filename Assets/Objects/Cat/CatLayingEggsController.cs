@@ -14,27 +14,32 @@ public class CatLayingEggsController : MonoBehaviour
     [SerializeField] private float waitBetweenChecks = 2;
     private float waitBetweenChecksTimer = 0;
     private float eggLayTimer = 0;
+    private CatAge catAge;
 
     private void Awake()
     {
         catNeeds = GetComponent<CatNeeds>();
+        catAge = GetComponent<CatAge>();
     }
 
     private void Update()
     {
-        waitBetweenChecksTimer -= TimeManager.deltaTime;
-        if(waitBetweenChecksTimer < 0)
+        if (catAge.GetAge == eCatAge.ADULT)
         {
-            waitBetweenChecksTimer = waitBetweenChecks;
-            eggLayTimer -= TimeManager.deltaTime;
-            if (eggLayTimer < 0)
+            waitBetweenChecksTimer -= TimeManager.deltaTime;
+            if (waitBetweenChecksTimer < 0)
             {
-                if (catNeeds.FilledPercentage > minimumNeedsToLayEgg)
+                waitBetweenChecksTimer = waitBetweenChecks;
+                eggLayTimer -= TimeManager.deltaTime;
+                if (eggLayTimer < 0)
                 {
-                    if (Random.value < chanceToLayEgg)
+                    if (catNeeds.FilledPercentage > minimumNeedsToLayEgg)
                     {
-                        LayEgg();
-                        catNeeds.UseNeeds(needsUsedToLayEggPercentage);
+                        if (Random.value < chanceToLayEgg)
+                        {
+                            LayEgg();
+                            catNeeds.UseNeeds(needsUsedToLayEggPercentage);
+                        }
                     }
                 }
             }
