@@ -11,6 +11,7 @@ public class HealthController : MonoBehaviour
     [SerializeField] private float timeInvicible = 2;
     public bool isInvunerable = false;
     private float timer = 0;
+    [SerializeField] private ParticleSystem hitParticles;
 
     private void FixedUpdate()
     {
@@ -29,6 +30,7 @@ public class HealthController : MonoBehaviour
         {
             healthPoints -= damage;
             isInvunerable = true;
+            hitParticles?.Play();
         }
 
         if(healthPoints <= 0)

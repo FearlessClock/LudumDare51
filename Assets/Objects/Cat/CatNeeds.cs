@@ -14,6 +14,9 @@ public class CatNeeds : MonoBehaviour
 
     private bool hasSentWant = false;
     private CatGoalHandler goalHandler = null;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite energyYellow;
+    [SerializeField] private Sprite energyRed;
 
     public float FilledPercentage => currentHunger / maxHunger;
 
@@ -39,6 +42,7 @@ public class CatNeeds : MonoBehaviour
         {
             currentHunger = 0;
         }
+        UpdateEnergySprite();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -68,5 +72,22 @@ public class CatNeeds : MonoBehaviour
     public void UseNeeds(float needsUsedToLayEggPercentage)
     {
         currentHunger -= needsUsedToLayEggPercentage;
+    }
+
+    private void UpdateEnergySprite()
+    {
+        if(currentHunger > maxHunger * 2 / 3)
+        {
+            spriteRenderer.enabled = false;
+        }else if (currentHunger > maxHunger / 3)
+        {
+            spriteRenderer.enabled = true;
+            spriteRenderer.sprite = energyYellow;
+        }
+        else
+        {
+            spriteRenderer.enabled = true;
+            spriteRenderer.sprite = energyRed;
+        }
     }
 }
