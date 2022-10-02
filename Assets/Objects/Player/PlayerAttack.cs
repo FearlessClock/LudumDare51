@@ -14,8 +14,12 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private Transform swordTransform;
     [SerializeField] private AnimationCurve swordSlice;
+    [SerializeField] private bool swordFollowDirection;
+    [SerializeField] private bool castFollowSword;
     private Coroutine swordRoutine = null;
     private Animator animator;
+
+    private Vector3 attackPos;
 
     public void InitPlayer()
     {
@@ -37,14 +41,18 @@ public class PlayerAttack : MonoBehaviour
             if (player.GetButton("Attack") || Input.GetKeyDown(KeyCode.K))
             {
                 PlaySwordAnimation();
-                CastAttackSphere();
+                if (!castFollowSword)
+                    CastAttackSphere(previousDirection);
             }
         }
     }
 
-    private void CastAttackSphere()
+    private void CastAttackSphere(Vector3 dir)
     {
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position + previousDirection.normalized, attackRange, previousDirection, .01f, enemyMask);
+        //
+        attackPos = transform.position + dir.normalized;
+        //
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position + dir.normalized, attackRange, dir, .01f, enemyMask);
         if (hit.collider != null)
         {
             hit.collider.GetComponent<HealthController>().Hit(1);
@@ -63,13 +71,21 @@ public class PlayerAttack : MonoBehaviour
         swordTransform.gameObject.SetActive(true);
 
         float r = Mathf.Sign(Random.Range(-1f, 1f));
+        float offset = Vector2.SignedAngle(Vector2.left, previousDirection);
 
         float length = swordSlice[swordSlice.length - 1].time;
         float timer = 0;
         while (timer < length)
         {
-            float offset = Vector2.SignedAngle(Vector2.left, previousDirection);
-            swordTransform.rotation = Quaternion.Euler(0, 0, offset + r * swordSlice.Evaluate(timer));
+            if (swordFollowDirection)
+                offset = Vector2.SignedAngle(Vector2.left, previousDirection);
+
+            float angle = offset + r * swordSlice.Evaluate(timer);
+
+            if (castFollowSword)
+                CastAttackSphere(Quaternion.Euler(0, 0, angle) * Vector2.left);
+
+            swordTransform.rotation = Quaternion.Euler(0, 0, angle);
             yield return new WaitForEndOfFrame();
             timer += TimeManager.deltaTime;
         }
@@ -81,7 +97,10 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + previousDirection.normalized, attackRange);
+        if(swordRoutine != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(attackPos, attackRange);
+        }
     }
 }
