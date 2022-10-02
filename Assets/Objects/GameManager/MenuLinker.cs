@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
@@ -14,14 +15,15 @@ public class MenuLinker : MonoBehaviour
     [SerializeField] private GameObject optionScreen;
 
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private Animator fade;
 
     private bool isOption;
 
     void Start()
     {
-        startButton.onClick.RemoveAllListeners();
+        //startButton.onClick.RemoveAllListeners();
         quitButton.onClick.RemoveAllListeners();
-        startButton.onClick.AddListener(GameManager.Instance.CallStartPlay);
+        //startButton.onClick.AddListener(GameManager.Instance.CallStartPlay);
         quitButton.onClick.AddListener(GameManager.Instance.CallQuit);
     }
     
@@ -49,6 +51,19 @@ public class MenuLinker : MonoBehaviour
     public void changeSFXSlider(float lefloat)
     {
         audioMixer.SetFloat("SFX", Mathf.Log10(lefloat) * 20);
+    }
+
+
+    public void changeScene()
+    {fade.gameObject.SetActive(true);
+        fade.SetTrigger("ChangeState");
+        StartCoroutine(delayLoad());
+    }
+
+    IEnumerator delayLoad()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
     
 }
