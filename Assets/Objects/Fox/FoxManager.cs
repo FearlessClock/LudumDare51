@@ -7,6 +7,7 @@ public class FoxManager : Singleton<FoxManager>
 {
     public List<GameObject> foxes;
     [SerializeField] private EventObjectScriptable foxDiedEvent;
+    [SerializeField] private int moneyGainOnFoxDeath = 5;
 
     protected override void Awake()
     {
@@ -27,5 +28,6 @@ public class FoxManager : Singleton<FoxManager>
         GameObject obj = (GameObject)fox;
         foxes.Remove(obj);
         Destroy(obj);
+        ResourcesManager.Instance.AddMoney(moneyGainOnFoxDeath);
     }
 }
