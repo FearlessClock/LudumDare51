@@ -111,12 +111,19 @@ public class CatMovement : MonoBehaviour
         {
             velocity = velocity.normalized * maxSpeed;
         }
-
+        int x = velocity.normalized.x > 0 ? 1 : -1;
+        animator.SetFloat("Direction", x);
         rb.MovePosition(this.transform.position +  velocity) ;
     }
 
     private Vector3 FollowEnemey()
     {
+        if(followingEnemy == null)
+        {
+            currentState = CatState.MOVING_TO_TARGET;
+            return Vector3.zero;
+        }
+
         if (Vector3.Distance(followingEnemy.position, this.transform.position) > closeToEnemyDistance)
         {
             acceleration = movementSpeed * (followingEnemy.position - this.transform.position).normalized;
