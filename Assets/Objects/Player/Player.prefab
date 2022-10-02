@@ -211,6 +211,8 @@ MonoBehaviour:
         m_CallState: 2
   isStunned: {fileID: 11400000, guid: e4fba156cf57fd247aa3c5956d113cac, type: 2}
   animator: {fileID: -6274519098327342407}
+  bodyRenderer: {fileID: 5228294507100851522}
+  handRenderer: {fileID: 6499394248135447765}
 --- !u!114 &7286176353677943157
 MonoBehaviour:
   m_ObjectHideFlags: 0

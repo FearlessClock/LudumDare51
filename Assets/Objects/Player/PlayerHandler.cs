@@ -12,6 +12,8 @@ public class PlayerHandler : MonoBehaviour
     public BoolVariable isStunned;
     private float stunnedTimer = 0;
     [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer bodyRenderer;
+    [SerializeField] private SpriteRenderer handRenderer;
 
     public void PlayerInit(int id, BoolVariable stunnedVariable)
     {
@@ -19,13 +21,15 @@ public class PlayerHandler : MonoBehaviour
         player = ReInput.players.GetPlayer(playerId);
         isStunned = stunnedVariable;
         playerLoaded?.Invoke();
+
+        (bodyRenderer.sprite, handRenderer.sprite) = MultiManager.Instance.GetSkin(id);
     }
 
     private void Update()
     {
         if (isStunned.value && stunnedTimer > 0)
         {
-            stunnedTimer -= Time.deltaTime;
+            stunnedTimer -= TimeManager.deltaTime;
             if(stunnedTimer <= 0)
             {
                 isStunned.SetValue(false);

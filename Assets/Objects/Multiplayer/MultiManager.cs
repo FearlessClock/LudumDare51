@@ -1,9 +1,21 @@
 using Rewired;
+using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MultiManager : PersistentSingleton<MultiManager>
 {
+    [Serializable] public struct PlayerSkin
+    {
+        public Sprite body;
+        public Sprite hand;
+    }
+
+    [ListDrawerSettings(ShowIndexLabels = true, DraggableItems = false)]
+    [SerializeField] private PlayerSkin[] skins = new PlayerSkin[3];
+
     private int playersConnected = 0;
     public int PlayersNumber { get => playersConnected; }
     private Dictionary<int, int> PlayerToID; // Key = Player Number, Value = Rewired.Player Id
@@ -91,5 +103,7 @@ public class MultiManager : PersistentSingleton<MultiManager>
     private int GetPlayerNumber(int controllerNumber) => ControllerToPlayer.ContainsKey(controllerNumber) ? ControllerToPlayer[controllerNumber] : -1;
 
     public int GetPlayerID(int playerNumber) => PlayerToID.ContainsKey(playerNumber) ? PlayerToID[playerNumber] : -1;
+
+    public (Sprite, Sprite) GetSkin(int playerID) => (skins[playerID].body, skins[playerID].hand);
 }
 
