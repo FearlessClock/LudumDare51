@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 4
+  diedEvent: {fileID: 11400000, guid: 79c3fcc8351138944b066d3469b9d146, type: 2}
 --- !u!114 &2501067923380170588
 MonoBehaviour:
   m_ObjectHideFlags: 0

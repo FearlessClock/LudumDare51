@@ -779,10 +779,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9117587088612773100, guid: dd2eaf197681fb241be5d6c19402a630, type: 3}
-      propertyPath: diedEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 79c3fcc8351138944b066d3469b9d146, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd2eaf197681fb241be5d6c19402a630, type: 3}
 --- !u!1001 &719169021
@@ -1555,6 +1551,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f80113aa8d7ad8849a7df5bcc5ad18a7, type: 3}
+--- !u!1 &1645136964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1645136966}
+  - component: {fileID: 1645136965}
+  m_Layer: 0
+  m_Name: CatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1645136965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645136964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c97bf01e0e5d14485a670022426114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catPrefab: {fileID: 7092969286602488412, guid: dd2eaf197681fb241be5d6c19402a630, type: 3}
+  catDied: {fileID: 11400000, guid: 94b495b54de660e46a9a25bd0f941e04, type: 2}
+  catsUpdated: {fileID: 11400000, guid: 135e024ae0131a94783c4e2c068c36d0, type: 2}
+--- !u!4 &1645136966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645136964}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1761459322 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3495115995282061607, guid: f80113aa8d7ad8849a7df5bcc5ad18a7, type: 3}
