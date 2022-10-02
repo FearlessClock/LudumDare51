@@ -25,14 +25,7 @@ public class FoxManager : PersistentSingleton<FoxManager>
     public void FoxDied(object fox)
     {
         GameObject obj = (GameObject)fox;
-        for (int i = 0; i < foxes.Count; i++)
-        {
-            if(foxes[i] == obj)
-            {
-                foxes.RemoveAt(i);
-                Destroy(obj);
-                return;
-            }
-        }
+        foxes.Remove(obj);
+        Destroy(obj);
     }
 }
