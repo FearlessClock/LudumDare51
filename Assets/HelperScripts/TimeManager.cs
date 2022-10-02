@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public static float deltaTime => Time.deltaTime;
-    public static float fixedDeltaTime => Time.fixedDeltaTime;
+    public static float deltaTime => timeScale * Time.deltaTime;
+    public static float fixedDeltaTime => timeScale * Time.fixedDeltaTime;
+
+    private static float timeScale = 1f;
+    public static void SetTimeScale(float scale) => timeScale = scale;
 }
