@@ -21,7 +21,7 @@ public class BuyFood : MonoBehaviour, IInteractable
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
 
-    [SerializeField] private FoodContainer foodContainer;
+    [SerializeField] private BowlController foodContainer;
 
     
     private void Awake()
