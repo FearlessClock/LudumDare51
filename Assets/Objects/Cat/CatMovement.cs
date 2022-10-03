@@ -17,6 +17,7 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private float closeDistance = 0;
     [SerializeField] private float maxSpeed = 1;
     [SerializeField] private float maxWanderDistance = 10;
+    [SerializeField] private float wanderTimerMax = 6;
 
     private ScaryObject[] scaryObjects = new ScaryObject[0];
     [SerializeField] private float avoidDistance = 1;
@@ -34,6 +35,7 @@ public class CatMovement : MonoBehaviour
 
     private bool hasCurrentGoal = false;
     private float waitTimer = 0;
+    private float wanderTimer = 0;
     private bool isWaitingForWaitActionCallback = false;
     private bool hasWanderTarget = false;
 
@@ -166,10 +168,12 @@ public class CatMovement : MonoBehaviour
 
     private Vector3 MoveToTargetState(Vector3 acceleration)
     {
-        if (Physics2D.CircleCast(currentTarget, .1f, (currentTarget - transform.position).normalized, .1f, scaryObjectLayer))
+        if (wanderTimer > wanderTimerMax || Physics2D.CircleCast(currentTarget, .1f, (currentTarget - transform.position).normalized, .1f, scaryObjectLayer))
         {
+            wanderTimer = 0;
             GetNewWanderTarget();
         }
+
         if (Vector3.Distance(currentTarget, this.transform.position) > closeDistance)
         {
             acceleration = movementSpeed * (currentTarget - this.transform.position).normalized;
@@ -182,6 +186,7 @@ public class CatMovement : MonoBehaviour
         }
         acceleration += CalculateAvoidance();
         acceleration *= TimeManager.fixedDeltaTime;
+        wanderTimer += TimeManager.fixedDeltaTime;
         return acceleration;
     } 
 
@@ -215,10 +220,10 @@ public class CatMovement : MonoBehaviour
         lastAvoidance = Vector3.zero;
         for (int i = 0; i < scaryObjects.Length; i++)
         {
-            if (Vector3.SqrMagnitude(scaryObjects[i].transform.position - this.transform.position) < closeDistance )
-            {
-                lastAvoidance += -(scaryObjects[i].transform.position - this.transform.position).normalized;
-            }
+            if (Vector3.SqrMagnitude(scaryObjects[i].transform.position - this.transform.position) >= avoidDistance)
+                continue;
+
+            lastAvoidance += -(scaryObjects[i].transform.position - this.transform.position).normalized;
         }
 
         lastAvoidance *= avoidanceMultiplier;
@@ -234,6 +239,7 @@ public class CatMovement : MonoBehaviour
 
     private void ReachedGoal()
     {
+        wanderTimer = 0;
         OnReachTarget?.Invoke();
     }
 

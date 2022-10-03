@@ -591,7 +591,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3190842634821056394, guid: a5e79106c283aca43ae2eeeb76133fc3, type: 2}
   m_audioClip: {fileID: 8300000, guid: 93d8c2babcc51a34f8ba5cde122c543c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.775
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2371,20 +2371,29 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.7877405
+      outSlope: 0.7877405
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.1247505
+    - serializedVersion: 3
+      time: 0.6
+      value: 2.5
+      inSlope: 12.015408
+      outSlope: 2.46168
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.13134529
+      outWeight: 0.19161658
     - serializedVersion: 3
       time: 1
       value: 5
-      inSlope: 2
-      outSlope: 2
+      inSlope: 9.787024
+      outSlope: 9.787024
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.049401224
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
