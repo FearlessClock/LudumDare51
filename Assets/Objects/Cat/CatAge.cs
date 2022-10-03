@@ -13,6 +13,8 @@ public class CatAge : MonoBehaviour
     private CatSpriteHandler catSpriteHandler = null;
     private eCatAge currentAge = eCatAge.KITTEN;
 
+    public ParticleSystem smokeEffect;
+
     private float ageTimer = 0;
 
     public Action<eCatAge> GrowUp = null;
@@ -39,9 +41,11 @@ public class CatAge : MonoBehaviour
                     case eCatAge.KITTEN:
                         currentAge = eCatAge.CHILD;
                         ageTimer = timeTillAdult;
+                        smokeEffect.Play();
                         break;
                     case eCatAge.CHILD:
                         currentAge = eCatAge.ADULT;
+                        smokeEffect.Play();
                         break;
                 }
                 catSpriteHandler.UpdateCatSprite();

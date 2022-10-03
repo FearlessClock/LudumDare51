@@ -101,8 +101,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1070572093
-  m_SortingLayer: 1
+  m_SortingLayerID: -1315743565
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 729a5ffbbd7d7e94cabe26c293842630, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -377,8 +377,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1070572093
-  m_SortingLayer: 1
+  m_SortingLayerID: -1315743565
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c502e8a6f5a82ae46ae62e89e1389c66, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -516,6 +516,10 @@ PrefabInstance:
     - target: {fileID: 646950316214336559, guid: ec34070a08bc8d548aafe8582b5282ac, type: 3}
       propertyPath: m_Name
       value: CircleLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 646950316214336560, guid: ec34070a08bc8d548aafe8582b5282ac, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec34070a08bc8d548aafe8582b5282ac, type: 3}

@@ -22,14 +22,12 @@ public class SellEgg : MonoBehaviour, IInteractable
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
     [SerializeField] private GameObject circle;
-
-    private SoundTransmitter st;
+    [SerializeField] private int priority = 4;
 
     private void Awake()
     {
         actualIntercationTime = interationTime;
         circle.SetActive(false);
-        st = GetComponent<SoundTransmitter>();
     }
 
     void Update()
@@ -69,7 +67,6 @@ public class SellEgg : MonoBehaviour, IInteractable
                 
             circleIsReady.fillAmount = 0;
             actualIntercationTime = interationTime;
-            st.Play("Coin");
 
             if (resources.EggNumber < eggNeeded)  StopInteration();
             
@@ -88,5 +85,10 @@ public class SellEgg : MonoBehaviour, IInteractable
             circle.SetActive(false);
             isEmptying = false;
         }
+    }
+
+    public int GetPriority()
+    {
+        return priority;
     }
 }
