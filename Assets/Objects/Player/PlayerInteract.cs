@@ -68,9 +68,11 @@ public class PlayerInteract : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<IInteractable>() != null)
+        IInteractable interact = collision.GetComponent<IInteractable>();
+        if (interact != null)
         {
-            interactableInRange.Add(collision.GetComponent<IInteractable>());
+            interactableInRange.Add(interact);
+            interact?.ShowOutline(true);
         }
         else if (collision.CompareTag("Egg"))
         {
@@ -81,10 +83,12 @@ public class PlayerInteract : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<IInteractable>() != null  )
+        IInteractable interact = collision.GetComponent<IInteractable>();
+        if (interact != null  )
         {
-            interactableInRange.Remove(collision.GetComponent<IInteractable>());
-            if (collision.GetComponent<IInteractable>() == currentInteractable)
+            interact?.ShowOutline(false);
+            interactableInRange.Remove(interact);
+            if (interact == currentInteractable)
             {
                 currentInteractable.StopInteration();
                 currentInteractable = null;

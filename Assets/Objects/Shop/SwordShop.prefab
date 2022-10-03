@@ -133,6 +133,7 @@ MonoBehaviour:
   swordGet: 1
   circleIsReady: {fileID: 7096670023175568725}
   circle: {fileID: 7096670023893184457}
+  outlineSprite: {fileID: 7675825001735875874}
   swordBought: {fileID: 11400000, guid: 4225b22e4d3633444a177f0b864d6a51, type: 2}
   priority: 3
 --- !u!114 &5802777536295369777

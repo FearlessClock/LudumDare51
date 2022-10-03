@@ -133,6 +133,7 @@ MonoBehaviour:
   armorGet: 1
   circleIsReady: {fileID: 5143551053034295771}
   circle: {fileID: 5143551053264323399}
+  outlineSprite: {fileID: 5736457332108224165}
   armorBought: {fileID: 11400000, guid: f2f0e185153ab9547856d19671d140b6, type: 2}
   priority: 2
 --- !u!114 &1485901370860213544
