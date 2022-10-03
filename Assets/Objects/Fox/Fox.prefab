@@ -59,7 +59,7 @@ MonoBehaviour:
   avoidDistance: 1
   avoidanceMultiplier: 0.8
   attackRange: 1.05
-  timeBeforeAttack: 10
+  timeBeforeAttack: 3
   catTarget: {fileID: 0}
   attackBuffer: 2
 --- !u!50 &4513773542438901895
