@@ -2,7 +2,6 @@ using HelperScripts.EventSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Codice.Client.BaseCommands.BranchExplorer;
 using UnityEngine;
 
 public class HealthController : MonoBehaviour
