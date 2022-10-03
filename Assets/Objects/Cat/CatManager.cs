@@ -137,6 +137,7 @@ public class CatManager : Singleton<CatManager>
                     cats[i].catEquipment.Equip(false, true);
                     ResourcesManager.Instance.RemoveArmor(1);
                     cats[i].catSpriteHandler.UpdateCatSprite();
+                    cats[i].catObject.gameObject.GetComponent<HealthController>().AddHealth(2);
                     return;
                 }
             }

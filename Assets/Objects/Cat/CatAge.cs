@@ -31,9 +31,9 @@ public class CatAge : MonoBehaviour
 
     private void Update()
     {
+        ageTimer -= TimeManager.deltaTime;
         if(catNeeds.FilledPercentage > agingPercentage)
         {
-            ageTimer -= TimeManager.deltaTime;
             if(ageTimer <= 0)
             {
                 switch (currentAge)
