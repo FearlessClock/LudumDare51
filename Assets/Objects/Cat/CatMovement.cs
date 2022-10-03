@@ -48,6 +48,7 @@ public class CatMovement : MonoBehaviour
     private Animator animator;
 
     private CatPetting catPetting = null;
+    [SerializeField]  private LayerMask scaryObjectLayer;
 
     private void Awake()
     {
@@ -165,6 +166,10 @@ public class CatMovement : MonoBehaviour
 
     private Vector3 MoveToTargetState(Vector3 acceleration)
     {
+        if (Physics2D.CircleCast(currentTarget, .1f, (currentTarget - transform.position).normalized, .1f, scaryObjectLayer))
+        {
+            GetNewWanderTarget();
+        }
         if (Vector3.Distance(currentTarget, this.transform.position) > closeDistance)
         {
             acceleration = movementSpeed * (currentTarget - this.transform.position).normalized;

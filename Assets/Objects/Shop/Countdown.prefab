@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 19675864438083720}
   - component: {fileID: 19675864438083717}
   - component: {fileID: 19675864438083718}
+  - component: {fileID: 8849776218645238960}
   - component: {fileID: 19675864438083719}
   m_Layer: 5
   m_Name: Countdown
@@ -77,6 +78,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8849776218645238960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19675864438083721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bf36b0480866f448677a677c6bdc41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lose: {fileID: 11400000, guid: 8627d5972b119cb47924bc543205d0ca, type: 2}
+  win: {fileID: 11400000, guid: 001dbdb891e6c3a4b9ac69a0eba4f41c, type: 2}
 --- !u!95 &19675864438083719
 Animator:
   serializedVersion: 4

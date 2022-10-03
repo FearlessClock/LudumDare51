@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7557712470315502224}
   - component: {fileID: 5779913578674807068}
-  m_Layer: 0
+  - component: {fileID: 5034119234236469971}
+  m_Layer: 10
   m_Name: hay-stack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,6 +108,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &5034119234236469971
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590293256767916253}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.32, y: 2.38}
+    newSize: {x: 4.32, y: 2.38}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.32, y: 2.38}
+  m_EdgeRadius: 0
 --- !u!1 &3077736739320111817
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736739320111818}
   - component: {fileID: 3077736739320111819}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -161,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736739582409489}
   - component: {fileID: 3077736739582409490}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (19)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -205,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736739636228729}
   - component: {fileID: 3077736739636228730}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (3)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -249,7 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736739688018278}
   - component: {fileID: 3077736739688018279}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (5)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -293,7 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736739849602290}
   - component: {fileID: 3077736739849602291}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (1)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -337,7 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736739889963615}
   - component: {fileID: 3077736739889963608}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (22)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -381,7 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736739890831277}
   - component: {fileID: 3077736739890831278}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (2)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -425,7 +452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736740037717355}
   - component: {fileID: 3077736740037717268}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (13)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -469,7 +496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736740242393994}
   - component: {fileID: 3077736740242393995}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (21)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -513,7 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736740262956838}
   - component: {fileID: 3077736740262956839}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (9)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -557,7 +584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736740314271929}
   - component: {fileID: 3077736740314271930}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (20)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -601,7 +628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736740327914709}
   - component: {fileID: 3077736740327914710}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (16)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -645,7 +672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736740431656287}
   - component: {fileID: 3077736740431656280}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (6)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -689,7 +716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736740538947008}
   - component: {fileID: 3077736740538947009}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (10)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -733,7 +760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736740600973577}
   - component: {fileID: 3077736740600973578}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (7)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -777,7 +804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736740602587801}
   - component: {fileID: 3077736740602587802}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (15)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -821,7 +848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736740722479381}
   - component: {fileID: 3077736740722479382}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (14)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -865,7 +892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736740748349856}
   - component: {fileID: 3077736740748349857}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (11)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -909,7 +936,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736741077319951}
   - component: {fileID: 3077736741077319944}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (8)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -953,7 +980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736741082207865}
   - component: {fileID: 3077736741082207866}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (4)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -997,7 +1024,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736741136835348}
   - component: {fileID: 3077736741136835349}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (12)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -1041,7 +1068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736741373394634}
   - component: {fileID: 3077736741373394635}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (18)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -1085,7 +1112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3077736741382580223}
   - component: {fileID: 3077736741382580216}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scary (17)
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}

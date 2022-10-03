@@ -9,8 +9,9 @@ public class FoxManager : Singleton<FoxManager>
     [SerializeField] private EventObjectScriptable foxDiedEvent;
     [SerializeField] private int moneyGainOnFoxDeath = 5;
     [SerializeField] private EventObjectScriptable lastWave;
-    [SerializeField] private EventObjectScriptable lose;
+    [SerializeField] private EventObjectScriptable win;
     private bool isLastWave = false;
+    bool hasCalledWin = false;
 
     protected override void Awake()
     {
@@ -23,8 +24,12 @@ public class FoxManager : Singleton<FoxManager>
     {
         if (isLastWave)
         {
-            if (foxes.Count <= 0)
-                lose.Call(null);
+            if (foxes.Count <= 0 && !hasCalledWin)
+            {
+                hasCalledWin = true;
+                win.Call(null);
+            }
+
         }
     }
 

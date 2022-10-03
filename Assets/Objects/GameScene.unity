@@ -586,7 +586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301102561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.96, y: -8.57, z: 0}
+  m_LocalPosition: {x: 2.96, y: -7.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2251,7 +2251,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
+      value: 5
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -2261,7 +2261,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxWave: 10
+  maxWave: 20
   lastWave: {fileID: 11400000, guid: 2520dd18a2d8fec4daa07a3aefbd9a15, type: 2}
 --- !u!114 &1879059994
 MonoBehaviour:
@@ -2279,7 +2279,7 @@ MonoBehaviour:
   foxDiedEvent: {fileID: 11400000, guid: 79c3fcc8351138944b066d3469b9d146, type: 2}
   moneyGainOnFoxDeath: 5
   lastWave: {fileID: 11400000, guid: 2520dd18a2d8fec4daa07a3aefbd9a15, type: 2}
-  lose: {fileID: 11400000, guid: 8627d5972b119cb47924bc543205d0ca, type: 2}
+  win: {fileID: 11400000, guid: 001dbdb891e6c3a4b9ac69a0eba4f41c, type: 2}
 --- !u!4 &1879059995
 Transform:
   m_ObjectHideFlags: 0
@@ -2498,6 +2498,14 @@ PrefabInstance:
     - target: {fileID: 1247187494150122291, guid: 376c0ec7b2b438b45bd0520ab14da356, type: 3}
       propertyPath: m_Name
       value: hay stack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686077518873392652, guid: 376c0ec7b2b438b45bd0520ab14da356, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941567448338447602, guid: 376c0ec7b2b438b45bd0520ab14da356, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9057775885144035093, guid: 376c0ec7b2b438b45bd0520ab14da356, type: 3}
       propertyPath: m_RootOrder

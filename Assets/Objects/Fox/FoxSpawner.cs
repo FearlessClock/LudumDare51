@@ -49,7 +49,7 @@ public class FoxSpawner : MonoBehaviour
         }
 
         wave++;
-        float nbFoxInWave = waveDivficulty.Evaluate(wave);
+        float nbFoxInWave = waveDivficulty.Evaluate(wave/maxWave);
 
         for (int i = 0; i < nbFoxInWave; i++)
         {

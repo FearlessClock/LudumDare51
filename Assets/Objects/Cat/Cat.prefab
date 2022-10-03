@@ -5030,6 +5030,9 @@ MonoBehaviour:
   wanderWaitTimeOffset: 3
   closeToEnemyDistance: 0.5
   tooCloseToEnemyDistance: 0.2
+  scaryObjectLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!50 &7092969286602488385
 Rigidbody2D:
   serializedVersion: 4

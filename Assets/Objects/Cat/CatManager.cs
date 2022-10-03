@@ -22,6 +22,7 @@ public class CatManager : Singleton<CatManager>
     [SerializeField] private int numberOfStartingCats = 3;
 
     [SerializeField] private EventObjectScriptable deafeat;
+    bool defeatCalled = false;
 
     protected override void Awake()
     {
@@ -98,8 +99,9 @@ public class CatManager : Singleton<CatManager>
         }
         catsUpdated?.Call();
 
-        if (cats.Count <= 0)
+        if (cats.Count <= 0 && !defeatCalled)
         {
+            defeatCalled = true;
             deafeat.Call(obj);
         }
     }
