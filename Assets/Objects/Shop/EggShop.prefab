@@ -133,6 +133,7 @@ MonoBehaviour:
   eggGet: 1
   circleIsReady: {fileID: 3017692788837988081}
   circle: {fileID: 3017692788875076717}
+  outlineSprite: {fileID: 2385379999675819654}
   priority: 3
 --- !u!114 &5576080308613608141
 MonoBehaviour:

@@ -272,6 +272,7 @@ MonoBehaviour:
   emptyingTime: 1
   circleIsReady: {fileID: 646950317148165919}
   circle: {fileID: 646950318158595459}
+  outlineSprite: {fileID: 8560609207929094459}
   priority: 6
 --- !u!1 &8560609207280987277
 GameObject:

@@ -370,6 +370,7 @@ MonoBehaviour:
   circleIsReady: {fileID: 3875824241882239376}
   circle: {fileID: 3875824241406837516}
   hatchTime: 5
+  outlineSprite: {fileID: 4410110895946580329}
   priority: 5
 --- !u!1 &4410110895946580331
 GameObject:
@@ -549,6 +550,10 @@ PrefabInstance:
     - target: {fileID: 646950316214336559, guid: ec34070a08bc8d548aafe8582b5282ac, type: 3}
       propertyPath: m_Name
       value: CircleLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 646950316214336560, guid: ec34070a08bc8d548aafe8582b5282ac, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec34070a08bc8d548aafe8582b5282ac, type: 3}

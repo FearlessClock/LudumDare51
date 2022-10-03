@@ -8,4 +8,5 @@ public interface IInteractable
     void StopInteration();
 
     int GetPriority();
+    void ShowOutline(bool show);
 }

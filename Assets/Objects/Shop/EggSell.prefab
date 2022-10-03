@@ -132,6 +132,7 @@ MonoBehaviour:
   moneyGet: 3
   circleIsReady: {fileID: 7000335596974101925}
   circle: {fileID: 7000335597339658041}
+  outlineSprite: {fileID: 7628074949222761212}
   priority: 4
 --- !u!114 &6240545485512557653
 MonoBehaviour:

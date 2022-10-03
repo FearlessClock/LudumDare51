@@ -5191,6 +5191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catPettingLoveParticle: {fileID: 8753327723873133899}
   timeToHeal: 10
+  outlineSprite: {fileID: 7092969286586536383}
   priority: 1
 --- !u!95 &1302348832026671461
 Animator:

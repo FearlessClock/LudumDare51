@@ -35,6 +35,7 @@ public class BowlController : Singleton<BowlController>, IInteractable
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
     [SerializeField] private GameObject circle;
+    [SerializeField] private SpriteRenderer outlineSprite;
     [SerializeField] private int priority = 6;
 
     private void Start()
@@ -107,5 +108,10 @@ public class BowlController : Singleton<BowlController>, IInteractable
     public int GetPriority()
     {
         return priority;
+    }
+
+    public void ShowOutline(bool show)
+    {
+        outlineSprite.material.SetFloat("_showOutline", show ? 1 : 0);
     }
 }

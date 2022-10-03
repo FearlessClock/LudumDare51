@@ -10,7 +10,8 @@ public class CatPetting : MonoBehaviour, IInteractable
     private bool isInteracting = false;
     [SerializeField] private float timeToHeal = 10;
     private float healTimer = 0;
-     [SerializeField] private int priority = 1;
+    [SerializeField] private SpriteRenderer outlineSprite;
+    [SerializeField] private int priority = 1;
 
     public bool IsBeingPetted => isInteracting;
 
@@ -52,4 +53,8 @@ public class CatPetting : MonoBehaviour, IInteractable
         return priority;
     }
 
+    public void ShowOutline(bool show)
+    {
+        outlineSprite.material.SetFloat("_showOutline", show ? 1 : 0);
+    }
 }
