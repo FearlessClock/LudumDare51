@@ -16,8 +16,6 @@ public class GameManager : PersistentSingleton<GameManager>
     [SerializeField] private EventObjectScriptable win;
     [SerializeField] private EventObjectScriptable deafeat;
 
-    public enum GameState { WIN, DEAFEAT }
-
     private void Start()
     {
         if(fade) fade.SetActive(true);
