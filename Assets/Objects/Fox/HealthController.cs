@@ -2,6 +2,7 @@ using HelperScripts.EventSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Codice.Client.BaseCommands.BranchExplorer;
 using UnityEngine;
 
 public class HealthController : MonoBehaviour
@@ -15,6 +16,12 @@ public class HealthController : MonoBehaviour
     [SerializeField] private ParticleSystem hitParticles;
     
     private SoundTransmitter st;
+
+    [Header("Blinking")] 
+    [SerializeField] private float timeBtwBlink;
+    private IEnumerator blikingCoroutine;
+    [SerializeField] private SpriteRenderer sr;
+    
 
     private void Start()
     {
@@ -30,6 +37,7 @@ public class HealthController : MonoBehaviour
         {
             timer = 0;
             isInvunerable = false;
+            StopBlinking();
         }
     }
 
@@ -41,6 +49,8 @@ public class HealthController : MonoBehaviour
             health -= damage;
             isInvunerable = true;
             hitParticles?.Play();
+            blikingCoroutine = Blink();
+            StartCoroutine(blikingCoroutine);
         }
 
         if(health <= 0)
@@ -63,5 +73,22 @@ public class HealthController : MonoBehaviour
     private void Die()
     {
         diedEvent?.Call(this.gameObject);
+    }
+
+    IEnumerator Blink()
+    {
+        Debug.Log("kjfnjzenjfj");
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0f);
+        yield return new WaitForSeconds(timeBtwBlink);
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+        yield return new WaitForSeconds(timeBtwBlink);
+        if(isInvunerable) StartCoroutine(Blink());
+    }
+
+    void StopBlinking()
+    {
+        StopCoroutine(blikingCoroutine);
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+        
     }
 }

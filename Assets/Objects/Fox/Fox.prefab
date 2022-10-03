@@ -185,6 +185,8 @@ MonoBehaviour:
   timeInvicible: 2
   isInvunerable: 0
   hitParticles: {fileID: 4652396550200982537}
+  timeBtwBlink: 0.01
+  sr: {fileID: 4513773542456554361}
 --- !u!95 &5586903409767828924
 Animator:
   serializedVersion: 4

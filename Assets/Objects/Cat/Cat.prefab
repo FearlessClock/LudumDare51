@@ -5147,6 +5147,8 @@ MonoBehaviour:
   timeInvicible: 2
   isInvunerable: 0
   hitParticles: {fileID: 3079819556911869890}
+  timeBtwBlink: 0.1
+  sr: {fileID: 7092969286586536383}
 --- !u!114 &2501067923380170588
 MonoBehaviour:
   m_ObjectHideFlags: 0
