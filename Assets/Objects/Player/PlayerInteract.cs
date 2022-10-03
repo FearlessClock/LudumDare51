@@ -46,10 +46,7 @@ public class PlayerInteract : MonoBehaviour
     private void GetInteractionPriority()
     {
         if(currentInteractable != null)
-        {
-            currentInteractable.StopInteration();
-        }
-        currentInteractable = null;
+            return;
 
         int x = -1;
         for (int i = 0; i < interactableInRange.Count; i++)
@@ -72,7 +69,8 @@ public class PlayerInteract : MonoBehaviour
         if (interact != null)
         {
             interactableInRange.Add(interact);
-            interact?.ShowOutline(true);
+            GetInteractionPriority();
+            currentInteractable?.ShowOutline(true);
         }
         else if (collision.CompareTag("Egg"))
         {
