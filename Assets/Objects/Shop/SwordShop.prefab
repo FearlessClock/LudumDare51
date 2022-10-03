@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7675825001735875874}
   - component: {fileID: 7675825001735875875}
   - component: {fileID: 7675825001735875876}
+  - component: {fileID: 5802777536295369777}
   m_Layer: 0
   m_Name: SwordShop
   m_TagString: Untagged
@@ -133,6 +134,27 @@ MonoBehaviour:
   circleIsReady: {fileID: 7096670023175568725}
   circle: {fileID: 7096670023893184457}
   swordBought: {fileID: 11400000, guid: 4225b22e4d3633444a177f0b864d6a51, type: 2}
+--- !u!114 &5802777536295369777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675825001735875877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e02d44da4c2b149abe89639d998441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Coin
+    clip: {fileID: 8300000, guid: b3f09d42cf1f53843924204608df0cf9, type: 3}
+    audioMixerGroup: {fileID: -4473546451650657367, guid: a5e79106c283aca43ae2eeeb76133fc3, type: 2}
+    volume: 0.1
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &7675825001935907382
 GameObject:
   m_ObjectHideFlags: 0

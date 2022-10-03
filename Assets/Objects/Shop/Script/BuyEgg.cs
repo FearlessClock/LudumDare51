@@ -23,11 +23,14 @@ public class BuyEgg : MonoBehaviour, IInteractable
     [SerializeField] private Image circleIsReady;
     [SerializeField] private GameObject circle;
 
+    private SoundTransmitter st;
+
 
     private void Awake()
     {
         actualIntercationTime = interationTime;
         circle.SetActive(false);
+        st = GetComponent<SoundTransmitter>();
     }
 
     void Update()
@@ -66,6 +69,7 @@ public class BuyEgg : MonoBehaviour, IInteractable
             resources.AddEgg(eggGet);
             circleIsReady.fillAmount = 0;
             actualIntercationTime = interationTime;
+            st.Play("Coin");
 
             if (resources.MoneyCount < moneyNeeded)  StopInteration();
             
