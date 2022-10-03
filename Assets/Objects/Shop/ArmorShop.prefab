@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9a3fabbcfdca6cb43943efb2b51c4589, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -350,6 +350,10 @@ PrefabInstance:
     - target: {fileID: 646950316214336559, guid: ec34070a08bc8d548aafe8582b5282ac, type: 3}
       propertyPath: m_Name
       value: CircleLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 646950316214336560, guid: ec34070a08bc8d548aafe8582b5282ac, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec34070a08bc8d548aafe8582b5282ac, type: 3}

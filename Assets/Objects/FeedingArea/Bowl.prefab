@@ -272,6 +272,7 @@ MonoBehaviour:
   emptyingTime: 1
   circleIsReady: {fileID: 646950317148165919}
   circle: {fileID: 646950318158595459}
+  priority: 6
 --- !u!1 &8560609207280987277
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +360,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9a3fabbcfdca6cb43943efb2b51c4589, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
