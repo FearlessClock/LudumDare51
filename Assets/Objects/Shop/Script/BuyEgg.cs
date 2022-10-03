@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuySword : MonoBehaviour, IInteractable
+public class BuyEgg : MonoBehaviour, IInteractable
 {
     [Header("Boolean")]
     private bool isInteracting = false;
@@ -17,15 +17,12 @@ public class BuySword : MonoBehaviour, IInteractable
     
     [Header("Resources")] 
     [SerializeField] private int moneyNeeded;
-    [SerializeField] private int swordGet;
+    [SerializeField] private int eggGet;
     
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
     [SerializeField] private GameObject circle;
 
-    [SerializeField] private EventScriptable swordBought;
-
-    [SerializeField] private int priority = 3;
 
     private void Awake()
     {
@@ -35,8 +32,8 @@ public class BuySword : MonoBehaviour, IInteractable
 
     void Update()
     {
-        /*if(Input.GetMouseButtonDown(2)) Interation(); 
-        else if (Input.GetMouseButtonUp(2)) StopInteration(); */
+        /*if(Input.GetMouseButtonDown(1)) Interation(); 
+        else if (Input.GetMouseButtonUp(1)) StopInteration(); */
        
         if(isInteracting) Action();
         else if(isEmptying) EmptyGauge();
@@ -66,8 +63,7 @@ public class BuySword : MonoBehaviour, IInteractable
             var resources = ResourcesManager.Instance;
             
             resources.RemoveMoney(moneyNeeded);
-            resources.AddSword(swordGet);
-            swordBought?.Call();
+            resources.AddEgg(eggGet);
             circleIsReady.fillAmount = 0;
             actualIntercationTime = interationTime;
 
@@ -88,10 +84,5 @@ public class BuySword : MonoBehaviour, IInteractable
             isEmptying = false;
             circle.SetActive(false);
         }
-    }
-
-    public int GetPriority()
-    {
-        return priority;
     }
 }

@@ -33,8 +33,8 @@ public class BuyFood : MonoBehaviour, IInteractable
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)) Interation(); 
-        else if (Input.GetMouseButtonUp(0)) StopInteration(); 
+        /*if(Input.GetMouseButtonDown(0)) Interation(); 
+        else if (Input.GetMouseButtonUp(0)) StopInteration(); */
        
         if(isInteracting) Action();
         else if(isEmptying) EmptyGauge();
