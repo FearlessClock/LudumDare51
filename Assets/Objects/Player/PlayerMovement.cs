@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 previousDirection;
     [SerializeField] private BoolVariable isStunned;
     private Animator animator;
+    [SerializeField] private Vector2 topLeftBound;
+    [SerializeField] private Vector2 botRightBound;
 
     public void InitPlayer()
     {
@@ -24,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-
         if (player != null && !isStunned.value)
         {
             direction = new Vector2(player.GetAxis("Horizontal"), player.GetAxis("Vertical"));
@@ -50,7 +51,12 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            transform.position += previousDirection.normalized * speed * TimeManager.deltaTime;
+            Vector3 nextPosition = transform.position + previousDirection.normalized * speed * TimeManager.deltaTime;
+
+            nextPosition.x = Mathf.Clamp(nextPosition.x, topLeftBound.x, botRightBound.x);
+            nextPosition.y = Mathf.Clamp(nextPosition.y, botRightBound.y, topLeftBound.y);
+
+            transform.position = new Vector2(nextPosition.x, nextPosition.y);
 
             animator.SetFloat("Direction", direction.x);
         }
