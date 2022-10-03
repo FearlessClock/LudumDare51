@@ -13,10 +13,13 @@ public class HealthController : MonoBehaviour
     public bool isInvunerable = false;
     private float timer = 0;
     [SerializeField] private ParticleSystem hitParticles;
+    
+    private SoundTransmitter st;
 
     private void Start()
     {
         health = healthPoints;
+        st = GetComponent<SoundTransmitter>();
     }
 
     private void FixedUpdate()
@@ -34,6 +37,7 @@ public class HealthController : MonoBehaviour
     {
         if (!isInvunerable)
         {
+            st.Play("Hit");
             health -= damage;
             isInvunerable = true;
             hitParticles?.Play();

@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 7286176353677943164}
   - component: {fileID: 7286176353677943167}
   - component: {fileID: -6274519098327342407}
+  - component: {fileID: 5806030379299676973}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -342,6 +343,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5806030379299676973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286176353677943156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e02d44da4c2b149abe89639d998441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Attack
+    clip: {fileID: 8300000, guid: 005e6f9e622b65e409b770e248a5ed5a, type: 3}
+    audioMixerGroup: {fileID: -4473546451650657367, guid: a5e79106c283aca43ae2eeeb76133fc3, type: 2}
+    volume: 0.1
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &7497915131525427838
 GameObject:
   m_ObjectHideFlags: 0
