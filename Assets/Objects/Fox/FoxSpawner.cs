@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +9,11 @@ public class FoxSpawner : MonoBehaviour
     [SerializeField] private GameObject[] foxInitialTargets;
 
     [SerializeField]private float time = 0;
-    private float spawnTime = 10.0f;
+    [SerializeField]private float spawnTime = 10.0f;
+
+    private float wave = 0;
+    [SerializeField] private AnimationCurve waveDivficulty;
+    [SerializeField] private float maxWave = 10;
 
     private void FixedUpdate()
     {
@@ -27,13 +30,22 @@ public class FoxSpawner : MonoBehaviour
     {
         if (foxSpawnPoints.Length == 0)
             return;
+        if (wave >= maxWave)
+            return;
 
-        GameObject spawnPoint = foxSpawnPoints[Random.Range(0, foxSpawnPoints.Length)];
-        GameObject initialTarget = foxInitialTargets[Random.Range(0, foxInitialTargets.Length)];
-        GameObject fox =  Instantiate(foxPrefab);
-        fox.transform.position = spawnPoint.transform.position;
-        fox.GetComponent<FoxMovement>().initialTarget = initialTarget.transform.position;
-        FoxManager.Instance.foxes.Add(fox);
+        wave++;
+        float nbFoxInWave = waveDivficulty.Evaluate(wave);
+
+        for (int i = 0; i < nbFoxInWave; i++)
+        {
+            GameObject spawnPoint = foxSpawnPoints[Random.Range(0, foxSpawnPoints.Length)];
+            GameObject initialTarget = foxInitialTargets[Random.Range(0, foxInitialTargets.Length)];
+            GameObject fox =  Instantiate(foxPrefab);
+            fox.transform.position = spawnPoint.transform.position;
+            fox.GetComponent<FoxMovement>().initialTarget = initialTarget.transform.position;
+            FoxManager.Instance.foxes.Add(fox);
+        }
+       
     }
 
 }
