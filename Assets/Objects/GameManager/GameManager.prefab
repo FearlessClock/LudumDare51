@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f14b65708f26974485cb49feacd6de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fade: {fileID: 0}
+  win: {fileID: 11400000, guid: 001dbdb891e6c3a4b9ac69a0eba4f41c, type: 2}
+  deafeat: {fileID: 11400000, guid: 8627d5972b119cb47924bc543205d0ca, type: 2}

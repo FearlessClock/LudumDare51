@@ -1861,6 +1861,7 @@ MonoBehaviour:
   armorBought: {fileID: 11400000, guid: f2f0e185153ab9547856d19671d140b6, type: 2}
   swordBought: {fileID: 11400000, guid: 4225b22e4d3633444a177f0b864d6a51, type: 2}
   numberOfStartingCats: 3
+  deafeat: {fileID: 11400000, guid: 8627d5972b119cb47924bc543205d0ca, type: 2}
 --- !u!4 &1645136966
 Transform:
   m_ObjectHideFlags: 0
@@ -2142,6 +2143,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   maxWave: 10
+  lastWave: {fileID: 0}
 --- !u!114 &1879059994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2157,6 +2159,8 @@ MonoBehaviour:
   foxes: []
   foxDiedEvent: {fileID: 11400000, guid: 79c3fcc8351138944b066d3469b9d146, type: 2}
   moneyGainOnFoxDeath: 5
+  lastWave: {fileID: 0}
+  lose: {fileID: 11400000, guid: 8627d5972b119cb47924bc543205d0ca, type: 2}
 --- !u!4 &1879059995
 Transform:
   m_ObjectHideFlags: 0
