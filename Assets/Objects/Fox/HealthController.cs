@@ -22,7 +22,7 @@ public class HealthController : MonoBehaviour
     private IEnumerator blikingCoroutine;
     [SerializeField] private SpriteRenderer sr;
 
-    [SerializeField] private ParticleSystem deathParticle;
+    [SerializeField] private GameObject deathParticle;
     
 
     private void Start()
@@ -57,7 +57,7 @@ public class HealthController : MonoBehaviour
 
         if(health <= 0)
         {
-            deathParticle?.Play();
+            Instantiate(deathParticle, transform.position, transform.rotation);
             Die();
             return true;
         }
