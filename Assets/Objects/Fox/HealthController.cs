@@ -21,6 +21,8 @@ public class HealthController : MonoBehaviour
     [SerializeField] private float timeBtwBlink;
     private IEnumerator blikingCoroutine;
     [SerializeField] private SpriteRenderer sr;
+
+    [SerializeField] private ParticleSystem deathParticle;
     
 
     private void Start()
@@ -55,6 +57,7 @@ public class HealthController : MonoBehaviour
 
         if(health <= 0)
         {
+            deathParticle?.Play();
             Die();
             return true;
         }
@@ -77,7 +80,6 @@ public class HealthController : MonoBehaviour
 
     IEnumerator Blink()
     {
-        Debug.Log("kjfnjzenjfj");
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0f);
         yield return new WaitForSeconds(timeBtwBlink);
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
