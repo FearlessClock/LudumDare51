@@ -18,6 +18,7 @@ public class BreedingBox : MonoBehaviour, IInteractable
     [SerializeField] private Image circleIsReady;
     [SerializeField] private GameObject circle;
     [SerializeField] private float hatchTime = 5;
+    [SerializeField] private int priority = 5;
 
     private void Start()
     {
@@ -120,4 +121,8 @@ public class BreedingBox : MonoBehaviour, IInteractable
         }
     }
 
+    public int GetPriority()
+    {
+        return priority;
+    }
 }

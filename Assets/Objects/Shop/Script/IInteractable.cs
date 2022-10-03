@@ -7,4 +7,5 @@ public interface IInteractable
     void Interation();
     void StopInteration();
 
+    int GetPriority();
 }

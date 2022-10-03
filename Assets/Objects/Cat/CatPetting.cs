@@ -10,6 +10,7 @@ public class CatPetting : MonoBehaviour, IInteractable
     private bool isInteracting = false;
     [SerializeField] private float timeToHeal = 10;
     private float healTimer = 0;
+     [SerializeField] private int priority = 1;
 
     public bool IsBeingPetted => isInteracting;
 
@@ -45,6 +46,10 @@ public class CatPetting : MonoBehaviour, IInteractable
         {
             healthController.AddHealth(1);
         }
+    }
+    public int GetPriority()
+    {
+        return priority;
     }
 
 }

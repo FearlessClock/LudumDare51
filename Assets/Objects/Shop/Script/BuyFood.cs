@@ -23,8 +23,8 @@ public class BuyFood : MonoBehaviour, IInteractable
     [SerializeField] private GameObject circle;
 
     [SerializeField] private BowlController foodContainer;
+    private int priority = 2;
 
-    
     private void Awake()
     {
         actualIntercationTime = interationTime;
@@ -83,5 +83,10 @@ public class BuyFood : MonoBehaviour, IInteractable
             isEmptying = false;
             circle.SetActive(false);
         }
+    }
+
+    public int GetPriority()
+    {
+        return priority;
     }
 }

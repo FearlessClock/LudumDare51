@@ -9,21 +9,22 @@ public class BuyArmor : MonoBehaviour, IInteractable
     [Header("Boolean")]
     private bool isInteracting = false;
     private bool isEmptying = false;
-    
+
     [Header("Time")]
     [SerializeField] private float interationTime = 0;
     private float actualIntercationTime;
     [SerializeField] private float emptyingTime = 0;
-    
-    [Header("Resources")] 
+
+    [Header("Resources")]
     [SerializeField] private int moneyNeeded;
     [SerializeField] private int armorGet;
-    
+
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
     [SerializeField] private GameObject circle;
 
     [SerializeField] private EventScriptable armorBought;
+    [SerializeField] private int priority =2;
 
     private void Awake()
     {
@@ -86,5 +87,10 @@ public class BuyArmor : MonoBehaviour, IInteractable
             isEmptying = false;
             circle.SetActive(false);
         }
+    }
+
+    public int GetPriority()
+    {
+        return priority;
     }
 }

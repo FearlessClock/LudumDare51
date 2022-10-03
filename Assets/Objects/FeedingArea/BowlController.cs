@@ -35,6 +35,7 @@ public class BowlController : Singleton<BowlController>, IInteractable
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
     [SerializeField] private GameObject circle;
+    [SerializeField] private int priority = 6;
 
     private void Start()
     {
@@ -101,5 +102,10 @@ public class BowlController : Singleton<BowlController>, IInteractable
             isEmptying = false;
             circle.SetActive(false);
         }
+    }
+
+    public int GetPriority()
+    {
+        return priority;
     }
 }

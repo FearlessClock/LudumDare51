@@ -25,7 +25,8 @@ public class BuySword : MonoBehaviour, IInteractable
 
     [SerializeField] private EventScriptable swordBought;
 
-    
+    [SerializeField] private int priority = 3;
+
     private void Awake()
     {
         actualIntercationTime = interationTime;
@@ -87,5 +88,10 @@ public class BuySword : MonoBehaviour, IInteractable
             isEmptying = false;
             circle.SetActive(false);
         }
+    }
+
+    public int GetPriority()
+    {
+        return priority;
     }
 }
