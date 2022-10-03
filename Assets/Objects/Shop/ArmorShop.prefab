@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Coin
+  - name: Coins
     clip: {fileID: 8300000, guid: b3f09d42cf1f53843924204608df0cf9, type: 3}
     audioMixerGroup: {fileID: -4473546451650657367, guid: a5e79106c283aca43ae2eeeb76133fc3, type: 2}
     volume: 0.1

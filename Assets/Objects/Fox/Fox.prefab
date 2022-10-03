@@ -237,10 +237,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Hit
-    clip: {fileID: 8300000, guid: 0f283d21b8fc7054e9e72ecb24f75df0, type: 3}
+    clip: {fileID: 8300000, guid: 5b8f2fee12833cb4fac67e74c0cfcae0, type: 3}
     audioMixerGroup: {fileID: -4473546451650657367, guid: a5e79106c283aca43ae2eeeb76133fc3, type: 2}
     volume: 0.1
-    pitch: 1
+    pitch: 0.7
     playOnAwake: 0
     loop: 0
     source: {fileID: 0}
