@@ -49,7 +49,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Direcition
     m_Mirror: 0
-  m_BlendParameter: Direcition
+  m_BlendParameter: Direction
   m_BlendParameterY: Direcition
   m_MinThreshold: -1
   m_MaxThreshold: 1
@@ -124,19 +124,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Idle
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: Direcition
+    m_Controller: {fileID: 0}
+  - m_Name: Direction
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -174,7 +174,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Direcition
     m_Mirror: 0
-  m_BlendParameter: Direcition
+  m_BlendParameter: Direction
   m_BlendParameterY: Blend
   m_MinThreshold: -1
   m_MaxThreshold: 1

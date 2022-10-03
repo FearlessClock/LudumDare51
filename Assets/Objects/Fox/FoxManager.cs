@@ -30,9 +30,11 @@ public class FoxManager : Singleton<FoxManager>
 
     public void DeleteAllFoxes()
     { 
-        for (int i = foxes.Count; i >= 0; i--)
+        for (int i = foxes.Count-1; i >= 0; i--)
         {
-            Destroy(foxes[i]);
+            GameObject obj = foxes[i];
+            foxes.Remove(obj);
+            Destroy(obj);
         }
     }
 

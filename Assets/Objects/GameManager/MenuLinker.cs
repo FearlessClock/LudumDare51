@@ -65,5 +65,4 @@ public class MenuLinker : MonoBehaviour
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
-    
 }

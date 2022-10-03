@@ -143,7 +143,7 @@ MonoBehaviour:
   maxWanderDistance: 3
   avoidDistance: 1
   avoidanceMultiplier: 0.8
-  attackRange: 1.05
+  attackRange: 1.12
   timeBeforeAttack: 3
   catTarget: {fileID: 0}
   attackBuffer: 2
@@ -187,7 +187,7 @@ MonoBehaviour:
   hitParticles: {fileID: 4652396550200982537}
   timeBtwBlink: 0.01
   sr: {fileID: 4513773542456554361}
-  deathParticle: {fileID: 2667405270372031709, guid: b03671b366a9c1942b19079f928ed2bc, type: 3}
+  deathParticle: {fileID: 7582269626973054735, guid: b03671b366a9c1942b19079f928ed2bc, type: 3}
 --- !u!95 &5586903409767828924
 Animator:
   serializedVersion: 4

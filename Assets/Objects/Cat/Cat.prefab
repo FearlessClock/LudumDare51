@@ -5024,7 +5024,7 @@ MonoBehaviour:
   drag: 0.94
   closeDistance: 0.5
   maxSpeed: 0.04
-  maxWanderDistance: 3.92
+  maxWanderDistance: 6.72
   avoidDistance: 1.16
   avoidanceMultiplier: 0.7
   wanderWaitTimeOffset: 3
@@ -5174,8 +5174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed226db8a2f87554196acdd566bad056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTillAdult: 10
-  timeTillChild: 10
+  timeTillAdult: 5
+  timeTillChild: 5
   agingPercentage: 0.8
   smokeEffect: {fileID: 8252465017454731207}
 --- !u!114 &6281319886248776725

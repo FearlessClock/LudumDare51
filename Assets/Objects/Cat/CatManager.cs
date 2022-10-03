@@ -93,13 +93,15 @@ public class CatManager : Singleton<CatManager>
                 cats[i].catObject.GrowUp -= CatGrowUp; 
                 cats.RemoveAt(i);
                 Destroy(obj);
-                return;
+                break;
             }
         }
         catsUpdated?.Call();
 
         if (cats.Count <= 0)
+        {
             deafeat.Call(obj);
+        }
     }
 
     private void CatGiveSword()

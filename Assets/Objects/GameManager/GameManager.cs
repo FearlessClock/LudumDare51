@@ -14,28 +14,35 @@ public class GameManager : PersistentSingleton<GameManager>
     [SerializeField] GameObject fade;
 
     [SerializeField] private EventObjectScriptable win;
-    [SerializeField] private EventObjectScriptable deafeat;
+    [SerializeField] private EventObjectScriptable defeat;
 
     private void Start()
     {
         if(fade) fade.SetActive(true);
         win.AddListener(WinGame);
-        deafeat.AddListener(LoseGame);
+        defeat.AddListener(LoseGame);
     }
 
     public void GameStart()
     {
+
+        TimeManager.SetTimeScale(1);
         // Init necessary Game Settings..
     }
 
     public void LoseGame(object obj)
     {
-        Debug.Log("Lose : Not implemented but is called");
+        TimeManager.SetTimeScale(0);
+        FoxManager.Instance.DeleteAllFoxes();
+        SceneManager.LoadSceneAsync("Defeat", LoadSceneMode.Additive);
     }
 
     public void WinGame(object obj)
     {
-        Debug.Log("Win : Not implemented but is called");
+        Debug.Log("Victory");
+        TimeManager.SetTimeScale(0);
+        FoxManager.Instance.DeleteAllFoxes();
+        SceneManager.LoadSceneAsync("Victory", LoadSceneMode.Additive);
     }
 
     public void Pause(bool on)

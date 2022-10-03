@@ -124,22 +124,23 @@ public class FoxMovement : MonoBehaviour
         if (Vector3.Distance(currentTarget, this.transform.position) > attackRange)
         {
             acceleration = movementSpeed * (currentTarget - this.transform.position).normalized;
-            timeAttack = 0.0f;
         }
         else
         {
-            if(timeAttack > attackBuffer)
-            {
-                timeAttack -= attackBuffer;
-                catTarget.GetComponent<HealthController>().Hit(1.0f);
-            }
 
-            if(!catTarget)
+            if (!catTarget)
             {
                 currentState = FoxState.WANDERING;
                 timer = 0;
                 return acceleration;
             }
+
+            if (timeAttack > attackBuffer)
+            {
+                timeAttack = 0.0f;
+                catTarget.GetComponent<HealthController>().Hit(1.0f);
+            }
+
         }
         acceleration += CalculateAvoidance();
         acceleration *= TimeManager.fixedDeltaTime;
@@ -148,7 +149,7 @@ public class FoxMovement : MonoBehaviour
 
     private void FindCatTarget()
     {
-        if (!catTarget)
+        if (!catTarget && CatManager.Instance.cats.Count > 0)
             catTarget = CatManager.Instance.cats[Random.Range(0, CatManager.Instance.cats.Count)].catObject.gameObject;
     }
 

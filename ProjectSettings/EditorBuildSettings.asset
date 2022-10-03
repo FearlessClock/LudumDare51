@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Objects/GameScene.unity
     guid: af47b5430cd8af548b221f4252c48a9e
+  - enabled: 1
+    path: Assets/Objects/GameManager/Victory.unity
+    guid: 1818758caceaeb24a9acf10ec6e9531c
+  - enabled: 1
+    path: Assets/Objects/GameManager/Defeat.unity
+    guid: fd899914eb133c846ab19ed8886bc1fe
   m_configObjects: {}
