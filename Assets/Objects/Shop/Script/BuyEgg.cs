@@ -22,7 +22,7 @@ public class BuyEgg : MonoBehaviour, IInteractable
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
     [SerializeField] private GameObject circle;
-
+    [SerializeField] private int priority = 3;
 
     private void Awake()
     {
@@ -84,5 +84,9 @@ public class BuyEgg : MonoBehaviour, IInteractable
             isEmptying = false;
             circle.SetActive(false);
         }
+    }
+    public int GetPriority()
+    {
+        return priority;
     }
 }

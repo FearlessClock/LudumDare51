@@ -105,6 +105,7 @@ public class CatManager : Singleton<CatManager>
             {
                 if (!cats[i].catEquipment.HasSword && cats[i].catObject.GetAge == eCatAge.ADULT)
                 {
+                    cats[i].catObject.smokeEffect.Play();
                     cats[i].catEquipment.Equip(true, false);
                     ResourcesManager.Instance.RemoveSword(1);
                     cats[i].catSpriteHandler.UpdateCatSprite();
@@ -123,6 +124,7 @@ public class CatManager : Singleton<CatManager>
             {
                 if (cats[i].catEquipment.HasSword && !cats[i].catEquipment.HasArmor)
                 {
+                    cats[i].catObject.smokeEffect.Play();
                     cats[i].catEquipment.Equip(false, true);
                     ResourcesManager.Instance.RemoveArmor(1);
                     cats[i].catSpriteHandler.UpdateCatSprite();
