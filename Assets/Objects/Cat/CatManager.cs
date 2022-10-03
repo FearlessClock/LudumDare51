@@ -21,6 +21,8 @@ public class CatManager : Singleton<CatManager>
     [SerializeField] private EventScriptable swordBought;
     [SerializeField] private int numberOfStartingCats = 3;
 
+    [SerializeField] private EventObjectScriptable deafeat;
+
     protected override void Awake()
     {
         base.Awake();
@@ -95,6 +97,9 @@ public class CatManager : Singleton<CatManager>
             }
         }
         catsUpdated?.Call();
+
+        if (cats.Count <= 0)
+            deafeat.Call(obj);
     }
 
     private void CatGiveSword()
