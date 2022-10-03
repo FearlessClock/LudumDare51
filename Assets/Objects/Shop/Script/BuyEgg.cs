@@ -1,9 +1,10 @@
+using HelperScripts.EventSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuyFood : MonoBehaviour, IInteractable
+public class BuyEgg : MonoBehaviour, IInteractable
 {
     [Header("Boolean")]
     private bool isInteracting = false;
@@ -15,16 +16,14 @@ public class BuyFood : MonoBehaviour, IInteractable
     [SerializeField] private float emptyingTime = 0;
     
     [Header("Resources")] 
-    //[SerializeField] private int moneyNeeded;
-    //[SerializeField] private int foodGet;
+    [SerializeField] private int moneyNeeded;
+    [SerializeField] private int eggGet;
     
     [Header("Ref")]
     [SerializeField] private Image circleIsReady;
     [SerializeField] private GameObject circle;
 
-    [SerializeField] private BowlController foodContainer;
 
-    
     private void Awake()
     {
         actualIntercationTime = interationTime;
@@ -33,8 +32,8 @@ public class BuyFood : MonoBehaviour, IInteractable
 
     void Update()
     {
-        /*if(Input.GetMouseButtonDown(0)) Interation(); 
-        else if (Input.GetMouseButtonUp(0)) StopInteration(); */
+        /*if(Input.GetMouseButtonDown(1)) Interation(); 
+        else if (Input.GetMouseButtonUp(1)) StopInteration(); */
        
         if(isInteracting) Action();
         else if(isEmptying) EmptyGauge();
@@ -42,7 +41,7 @@ public class BuyFood : MonoBehaviour, IInteractable
 
     public void Interation()
     {
-        if (foodContainer.FoodCount >= foodContainer.MAXFoodCount) return;
+        if (ResourcesManager.Instance.MoneyCount <= moneyNeeded) return;
         circle.SetActive(true);
         isInteracting = true;
         isEmptying = false;
@@ -61,12 +60,14 @@ public class BuyFood : MonoBehaviour, IInteractable
 
         if (actualIntercationTime <= 0)
         {
-            foodContainer.RefillFood();
-                
+            var resources = ResourcesManager.Instance;
+            
+            resources.RemoveMoney(moneyNeeded);
+            resources.AddEgg(eggGet);
             circleIsReady.fillAmount = 0;
             actualIntercationTime = interationTime;
 
-            if (foodContainer.FoodCount >= foodContainer.MAXFoodCount)  StopInteration();
+            if (resources.MoneyCount < moneyNeeded)  StopInteration();
             
         }
     }

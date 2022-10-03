@@ -9,6 +9,13 @@ public class GameManager : PersistentSingleton<GameManager>
     private bool isPaused = false;
     public bool IsPaused { get => isPaused; }
     private Coroutine loadingCoroutine = null;
+    
+    [SerializeField] GameObject fade;
+
+    private void Start()
+    {
+        if(fade) fade.SetActive(true);
+    }
 
     public void GameStart()
     {
