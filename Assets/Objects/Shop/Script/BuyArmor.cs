@@ -33,8 +33,8 @@ public class BuyArmor : MonoBehaviour, IInteractable
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(1)) Interation(); 
-        else if (Input.GetMouseButtonUp(1)) StopInteration(); 
+        /*if(Input.GetMouseButtonDown(1)) Interation(); 
+        else if (Input.GetMouseButtonUp(1)) StopInteration(); */
        
         if(isInteracting) Action();
         else if(isEmptying) EmptyGauge();

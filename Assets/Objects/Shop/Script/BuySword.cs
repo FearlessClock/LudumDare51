@@ -34,8 +34,8 @@ public class BuySword : MonoBehaviour, IInteractable
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(2)) Interation(); 
-        else if (Input.GetMouseButtonUp(2)) StopInteration(); 
+        /*if(Input.GetMouseButtonDown(2)) Interation(); 
+        else if (Input.GetMouseButtonUp(2)) StopInteration(); */
        
         if(isInteracting) Action();
         else if(isEmptying) EmptyGauge();
