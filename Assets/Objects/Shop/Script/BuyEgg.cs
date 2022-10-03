@@ -23,7 +23,6 @@ public class BuyEgg : MonoBehaviour, IInteractable
     [SerializeField] private Image circleIsReady;
     [SerializeField] private GameObject circle;
 
-    [SerializeField] private EventScriptable armorBought;
 
     private void Awake()
     {
