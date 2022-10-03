@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FoxSpawner : MonoBehaviour
 {
@@ -14,6 +16,13 @@ public class FoxSpawner : MonoBehaviour
     private float wave = 0;
     [SerializeField] private AnimationCurve waveDivficulty;
     [SerializeField] private float maxWave = 10;
+    
+    private SoundTransmitter st;
+
+    private void Awake()
+    {
+        st = GetComponent<SoundTransmitter>();
+    }
 
     private void FixedUpdate()
     {
@@ -28,6 +37,7 @@ public class FoxSpawner : MonoBehaviour
 
     private void SpawnFox()
     {
+        st.Play("Spawn");
         if (foxSpawnPoints.Length == 0)
             return;
         if (wave >= maxWave)

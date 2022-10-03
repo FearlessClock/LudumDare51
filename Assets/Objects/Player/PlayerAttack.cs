@@ -1,7 +1,9 @@
+using System;
 using Rewired;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -20,6 +22,13 @@ public class PlayerAttack : MonoBehaviour
     private Animator animator;
 
     private Vector3 attackPos;
+
+    private SoundTransmitter st;
+
+    private void Awake()
+    {
+        st = GetComponent<SoundTransmitter>();
+    }
 
     public void InitPlayer()
     {
@@ -63,6 +72,8 @@ public class PlayerAttack : MonoBehaviour
     {
         if (swordRoutine != null)
             return;
+        
+        st.Play("Attack");
         swordRoutine = StartCoroutine(SwordAnimation());
     }
 

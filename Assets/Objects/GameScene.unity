@@ -207,6 +207,7 @@ MonoBehaviour:
   circleIsReady: {fileID: 545098106}
   circle: {fileID: 377301335}
   hatchTime: 5
+  priority: 5
 --- !u!1 &38020720
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +371,7 @@ MonoBehaviour:
   moneyGet: 10
   circleIsReady: {fileID: 776562905}
   circle: {fileID: 332564525}
+  priority: 4
 --- !u!61 &143135025
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1404,6 +1406,7 @@ MonoBehaviour:
   circleIsReady: {fileID: 2054493690}
   circle: {fileID: 875949427}
   swordBought: {fileID: 11400000, guid: 4225b22e4d3633444a177f0b864d6a51, type: 2}
+  priority: 3
 --- !u!61 &1072343868
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1621,6 +1624,7 @@ MonoBehaviour:
   circleIsReady: {fileID: 1205324221}
   circle: {fileID: 948486574}
   armorBought: {fileID: 11400000, guid: f2f0e185153ab9547856d19671d140b6, type: 2}
+  priority: 2
 --- !u!61 &1174999152
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2785,6 +2789,7 @@ GameObject:
   - component: {fileID: 1879059995}
   - component: {fileID: 1879059994}
   - component: {fileID: 1879059993}
+  - component: {fileID: 1879059996}
   m_Layer: 0
   m_Name: FoxManager
   m_TagString: Untagged
@@ -2812,6 +2817,14 @@ MonoBehaviour:
   - {fileID: 160602724}
   - {fileID: 1498597568}
   time: 0
+  spawnTime: 10
+  waveDivficulty:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxWave: 10
 --- !u!114 &1879059994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2846,6 +2859,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1879059996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879059992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e02d44da4c2b149abe89639d998441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Spawn
+    clip: {fileID: 8300000, guid: 0f283d21b8fc7054e9e72ecb24f75df0, type: 3}
+    audioMixerGroup: {fileID: -4473546451650657367, guid: a5e79106c283aca43ae2eeeb76133fc3, type: 2}
+    volume: 0.1
+    pitch: 1.2
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &1933949134
 GameObject:
   m_ObjectHideFlags: 0
