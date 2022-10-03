@@ -12,6 +12,8 @@ public class GameManager : PersistentSingleton<GameManager>
     
     [SerializeField] GameObject fade;
 
+    //[SerializeField] private EventScriptable defeat;
+
     private void Start()
     {
         if(fade) fade.SetActive(true);

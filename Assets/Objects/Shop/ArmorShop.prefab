@@ -134,6 +134,7 @@ MonoBehaviour:
   circleIsReady: {fileID: 5143551053034295771}
   circle: {fileID: 5143551053264323399}
   armorBought: {fileID: 11400000, guid: f2f0e185153ab9547856d19671d140b6, type: 2}
+  priority: 2
 --- !u!114 &1485901370860213544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,9 +226,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: -1315743565
+  m_SortingLayer: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 23bec76e3023f4d4ea1296dbfd0c7193, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

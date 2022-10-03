@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1315743565
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c7ce894e89994d34fa79aa8f80e24929, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -132,6 +132,7 @@ MonoBehaviour:
   moneyGet: 3
   circleIsReady: {fileID: 7000335596974101925}
   circle: {fileID: 7000335597339658041}
+  priority: 4
 --- !u!114 &6240545485512557653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +260,10 @@ PrefabInstance:
     - target: {fileID: 646950316214336559, guid: ec34070a08bc8d548aafe8582b5282ac, type: 3}
       propertyPath: m_Name
       value: CircleLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 646950316214336560, guid: ec34070a08bc8d548aafe8582b5282ac, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec34070a08bc8d548aafe8582b5282ac, type: 3}
