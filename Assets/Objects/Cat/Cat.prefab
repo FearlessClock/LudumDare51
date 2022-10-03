@@ -4964,6 +4964,7 @@ GameObject:
   - component: {fileID: 3137600861257328386}
   - component: {fileID: 6281319886248776725}
   - component: {fileID: 1302348832026671461}
+  - component: {fileID: 5277282178691975664}
   m_Layer: 6
   m_Name: Cat
   m_TagString: Untagged
@@ -5209,6 +5210,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5277282178691975664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092969286602488412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e02d44da4c2b149abe89639d998441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Hit
+    clip: {fileID: 8300000, guid: 5b8f2fee12833cb4fac67e74c0cfcae0, type: 3}
+    audioMixerGroup: {fileID: -4473546451650657367, guid: a5e79106c283aca43ae2eeeb76133fc3, type: 2}
+    volume: 0.1
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &7919979059444357288
 GameObject:
   m_ObjectHideFlags: 0
