@@ -58,5 +58,11 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = 0;
         }
+
+
+        if (player.GetButtonDown("Pause"))
+        {
+            PauseManager.Instance.setPause();
+        }
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2385379999675819654}
   - component: {fileID: 2385379999675819655}
   - component: {fileID: 3895940844578975935}
+  - component: {fileID: 5576080308613608141}
   m_Layer: 0
   m_Name: EggShop
   m_TagString: Untagged
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1315743565
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fbe976f11270b1a4687b0d38c0ab04e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -132,6 +133,27 @@ MonoBehaviour:
   eggGet: 1
   circleIsReady: {fileID: 3017692788837988081}
   circle: {fileID: 3017692788875076717}
+--- !u!114 &5576080308613608141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2385379999675819649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e02d44da4c2b149abe89639d998441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Coin
+    clip: {fileID: 8300000, guid: b3f09d42cf1f53843924204608df0cf9, type: 3}
+    audioMixerGroup: {fileID: -4473546451650657367, guid: a5e79106c283aca43ae2eeeb76133fc3, type: 2}
+    volume: 0.1
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &2385380000263790994
 GameObject:
   m_ObjectHideFlags: 0

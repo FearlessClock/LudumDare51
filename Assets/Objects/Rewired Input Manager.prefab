@@ -317,6 +317,15 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 1
+    - _id: 7
+      _name: Pause
+      _type: 1
+      _descriptiveName: Pause
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
     actionCategories:
     - _name: Default
       _descriptiveName: Default
@@ -333,7 +342,7 @@ MonoBehaviour:
       - categoryId: 0
         actionIds: 
       - categoryId: 1
-        actionIds: 0000000001000000020000000400000005000000
+        actionIds: 000000000100000002000000040000000500000007000000
     inputBehaviors:
     - _id: 0
       _name: Default
@@ -566,7 +575,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: -1
+        _actionId: 7
         _elementType: 1
         _elementIdentifierId: 15
         _axisRange: 0
@@ -660,7 +669,7 @@ MonoBehaviour:
     controllerMapLayoutManagerRuleSets: []
     controllerMapEnablerRuleSets: []
     playerIdCounter: 4
-    actionIdCounter: 7
+    actionIdCounter: 8
     actionCategoryIdCounter: 2
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 2
