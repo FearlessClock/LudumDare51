@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,12 +14,14 @@ public class BowlController : Singleton<BowlController>, IInteractable
     [SerializeField] private int maxFoodCount;
     public int MAXFoodCount => maxFoodCount;
 
-    [SerializeField] private SpriteRenderer bowlSpriteRenderer;
-    [SerializeField] private Sprite bowlEmptySprite;
-    [SerializeField] private Sprite bowlFullSprite;
+    [SerializeField] private Transform minFoodHeight = null; 
+    [SerializeField] private Transform maxFoodHeight = null; 
+    [SerializeField] private Transform foodInBowl = null; 
 
-    private float actualFoodCount;
-    public float FoodCount => actualFoodCount;
+    private float currentFoodAmount;
+    public float FoodCount => currentFoodAmount;
+
+    public bool BowlHasFood => currentFoodAmount > 0;
 
     [Header("Boolean")]
     private bool isInteracting = false;
@@ -35,7 +38,7 @@ public class BowlController : Singleton<BowlController>, IInteractable
 
     private void Start()
     {
-        actualFoodCount = maxFoodCount;
+        currentFoodAmount = maxFoodCount;
         circle.SetActive(false);
     }
 
@@ -49,16 +52,15 @@ public class BowlController : Singleton<BowlController>, IInteractable
 
     public void RefillFood()
     {
-        actualFoodCount = maxFoodCount;
-        bowlSpriteRenderer.sprite = bowlFullSprite;
+        currentFoodAmount = maxFoodCount;
+        foodInBowl.DOMoveY(maxFoodHeight.position.y, 1);
     }
 
     public void RemoveFood(float food)
     {
-        Debug.Log("cat ate");
-        actualFoodCount -= food;
-        if(actualFoodCount <= 0)
-            bowlSpriteRenderer.sprite = bowlEmptySprite;
+        currentFoodAmount -= food;
+        foodInBowl.DOKill();
+        foodInBowl.DOMoveY(Mathf.Lerp(minFoodHeight.position.y, maxFoodHeight.position.y, currentFoodAmount/ maxFoodCount), 0.3f);
     }
 
     public void Interation()

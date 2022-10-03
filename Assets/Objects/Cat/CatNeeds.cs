@@ -18,6 +18,8 @@ public class CatNeeds : MonoBehaviour
     [SerializeField] private Sprite energyYellow;
     [SerializeField] private Sprite energyRed;
 
+    private float goalSentTimer = 0;
+
     public float FilledPercentage => currentHunger / maxHunger;
 
     private void Awake()
@@ -28,11 +30,24 @@ public class CatNeeds : MonoBehaviour
 
     private void Update()
     {
-        currentHunger -= lossOfHungerRate * Time.deltaTime;
+        if (hasSentWant)
+        {
+            goalSentTimer -= TimeManager.deltaTime;
+            if(goalSentTimer <= 0)
+            {
+                hasSentWant = false;
+            }
+        }
+        currentHunger -= lossOfHungerRate * TimeManager.deltaTime;
         if(!hasSentWant && FilledPercentage < hungerCutoffPercentage)
         {
-            hasSentWant = true;
-            goalHandler.AddGoal(new MoveToGoal(BowlController.Instance.GetInteractionPoint.position, 3));
+            if (BowlController.Instance.BowlHasFood)
+            {
+                hasSentWant = true;
+                goalHandler.AddGoal(new MoveToGoal(BowlController.Instance.GetInteractionPoint.position, 3));
+                goalSentTimer = 3;
+            }
+
         }
         else if(FilledPercentage > hungerCutoffPercentage && hasSentWant)
         {

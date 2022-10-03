@@ -9,7 +9,6 @@ public class PlayerInteract : MonoBehaviour
 
     private IInteractable currentInteractable;
     private BoolVariable isStunned;
-    private BowlController bowlController;
 
     public void InitPlayer()
     {

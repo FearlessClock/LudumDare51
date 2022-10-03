@@ -48,11 +48,14 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private float tooCloseToEnemyDistance = 0.3f;
     private Animator animator;
 
+    private CatPetting catPetting = null;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         scaryObjects = FindObjectsOfType<ScaryObject>();
         animator = GetComponent<Animator>();
+        catPetting = GetComponent<CatPetting>();
     }
 
     public void MoveToPointAndWaitForTime(Vector3 targetPosition, float stayTime)
@@ -80,6 +83,10 @@ public class CatMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (catPetting.IsBeingPetted)
+        {
+            return;
+        }
         switch (currentState)
         {
             case CatState.WANDERING:

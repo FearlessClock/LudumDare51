@@ -7,11 +7,17 @@ using UnityEngine;
 public class HealthController : MonoBehaviour
 {
     [SerializeField] private float healthPoints = 2;
+    private float health = 0;
     [SerializeField] private EventObjectScriptable diedEvent;
     [SerializeField] private float timeInvicible = 2;
     public bool isInvunerable = false;
     private float timer = 0;
     [SerializeField] private ParticleSystem hitParticles;
+
+    private void Start()
+    {
+        health = healthPoints;
+    }
 
     private void FixedUpdate()
     {
@@ -28,22 +34,26 @@ public class HealthController : MonoBehaviour
     {
         if (!isInvunerable)
         {
-            healthPoints -= damage;
+            health -= damage;
             isInvunerable = true;
             hitParticles?.Play();
         }
 
-        if(healthPoints <= 0)
+        if(health <= 0)
         {
             Die();
             return true;
         }
         return false;
     }
-    
-    public void AddHealth(float health)
+
+    public void AddHealth(float amount)
     {
-        healthPoints += health;
+        health += amount;
+        if (health > healthPoints)
+        {
+            health = healthPoints;
+        }
     }
 
     private void Die()
