@@ -1,4 +1,5 @@
 using System;
+using HelperScripts.EventSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,8 @@ public class FoxSpawner : MonoBehaviour
     private float wave = 0;
     [SerializeField] private AnimationCurve waveDivficulty;
     [SerializeField] private float maxWave = 10;
-    
+    [SerializeField] private EventObjectScriptable lastWave;
+
     private SoundTransmitter st;
 
     private void Awake()
@@ -41,7 +43,10 @@ public class FoxSpawner : MonoBehaviour
         if (foxSpawnPoints.Length == 0)
             return;
         if (wave >= maxWave)
+        {
+            lastWave.Call(null);
             return;
+        }
 
         wave++;
         float nbFoxInWave = waveDivficulty.Evaluate(wave);

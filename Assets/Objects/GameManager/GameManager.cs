@@ -1,3 +1,4 @@
+using HelperScripts.EventSystem;
 using System;
 using System.Collections;
 using UnityEditor;
@@ -12,11 +13,14 @@ public class GameManager : PersistentSingleton<GameManager>
     
     [SerializeField] GameObject fade;
 
-    //[SerializeField] private EventScriptable defeat;
+    [SerializeField] private EventObjectScriptable win;
+    [SerializeField] private EventObjectScriptable deafeat;
 
     private void Start()
     {
         if(fade) fade.SetActive(true);
+        win.AddListener(WinGame);
+        deafeat.AddListener(LoseGame);
     }
 
     public void GameStart()
@@ -24,9 +28,14 @@ public class GameManager : PersistentSingleton<GameManager>
         // Init necessary Game Settings..
     }
 
-    public void EndGame()
+    public void LoseGame(object obj)
     {
+        Debug.Log("Lose : Not implemented but is called");
+    }
 
+    public void WinGame(object obj)
+    {
+        Debug.Log("Win : Not implemented but is called");
     }
 
     public void Pause(bool on)
