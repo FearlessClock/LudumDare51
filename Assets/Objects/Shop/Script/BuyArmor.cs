@@ -26,10 +26,13 @@ public class BuyArmor : MonoBehaviour, IInteractable
     [SerializeField] private EventScriptable armorBought;
     [SerializeField] private int priority =2;
 
+    private SoundTransmitter st;
+
     private void Awake()
     {
         actualIntercationTime = interationTime;
         circle.SetActive(false);
+        st = GetComponent<SoundTransmitter>();
     }
 
     void Update()
@@ -69,6 +72,7 @@ public class BuyArmor : MonoBehaviour, IInteractable
             armorBought?.Call(); 
             circleIsReady.fillAmount = 0;
             actualIntercationTime = interationTime;
+            st.Play("Coins");
 
             if (resources.MoneyCount < moneyNeeded)  StopInteration();
             
